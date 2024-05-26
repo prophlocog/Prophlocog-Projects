@@ -41,30 +41,53 @@
    <body>
 
 
-<div class="container1">
-    <!-- Boczne menu -->
-    <aside class="sidebar">
-        <h2>Kategorie</h2>
-        <ul class="categories">
-            <li class="category"   >
-                <a href="#"  onmouseover="showCategoryInfo('po wjechaniu')"      onmouseout="">SYSTEM PE-X</a>
-           <ul class="submenu submenu3">
-                    <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)"><a href="#"   onmouseover="showCategoryInfo('po wjechaniu')"  onclick="showCategoryInfo('po kliku')"      onmouseout="">Rury wielowarstwowe<br>PEXb/AL/PE</a></li>
-                    <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)"><a href="#" onmouseover="showCategoryInfo('po wjechaniu')"  onclick="showCategoryInfo('Category 2 Information')" onmouseout="">Kształtki PEX<br>System skręcany</a></li>
-                    <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)"><a href="#" onmouseover="showCategoryInfo('po wjechaniu')"  onclick="showCategoryInfo('Category 2 Information')" onmouseout="">Kształtki PEX PLUS<br>System zaprasowywany </a>
-                   <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)"><a href="#"  onmouseover="showCategoryInfo('po wjechaniu')"  onclick="showCategoryInfo('Category 2 Information')" onmouseout="">Kształtki PEX<br>System zaprasowywany</a></li>
-                    <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)"><a href="#" onmouseover="showCategoryInfo('po wjechaniu')"  onclick="showCategoryInfo('Category 2 Information')" onmouseout="">Folia<br>ogrzewanie podłogowe</a></li>
-                    <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)"><a href="#" onmouseover="showCategoryInfo('po wjechaniu')"  onclick="showCategoryInfo('Category 2 Information')" onmouseout="">Narzędzia instalacyjne</a></li>
-                    <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)"><a href="#" onmouseover="showCategoryInfo('po wjechaniu')"  onclick="showCategoryInfo('Category 2 Information')" onmouseout="">Narzędzia instalacyjne<br>PEX</a></li>
+    <div class="container1">
+        <aside class="sidebar">
+            <h2>Kategorie</h2>
+            <ul class="categories">
+                <li class="category">
+                    <a href="#" onmouseover="showCategoryInfo('SYSTEM PE-X')" onclick="showCategoryInfo('SYSTEM PE-X')">SYSTEM PE-X</a>
+                    <ul class="submenu submenu3">
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onclick="showCategoryInfo(
+                                'Rury wielowarstwowe PEXb/AL/PE', 
+                                'Tekst animacji dla Rur wielowarstwowych', 
+                                '', 
+                                [
+                                    { src: 'zdjecia/FLD-023.png', alt: 'LINK1', description: 'ELO1', additionalDescription: 'Opis dla obrazka 1' },
+                                    { src: 'zdjecia/FLP-448.png', alt: 'LINK2', description: 'ELO2', additionalDescription: 'Opis dla obrazka 2' },
+                                    { src: 'zdjecia/konsola.png', alt: 'LINK3', description: 'ELO3', additionalDescription: 'Opis dla obrazka 3' }
+                                ])">
+                                Rury wielowarstwowe<br>PEXb/AL/PE
+                            </a>
+                        </li>
 
-                </ul>
-            </li>
-            <li class="category">
-                <a href="#">SYSTEM PP-R</a>
-                <ul class="submenu">
-                   <li><a href="#" onmouseover="showCategoryInfo('Rury z polipropylenu PP-R : Opis dla Podkategorii 2.1')" onmouseout="hideCategoryInfo()">Rury z polipropylenu PP-R </a></li>
-                   <li><a href="#" onmouseover="showCategoryInfo('Kształtki z polipropylenu PP-R: Opis dla Podkategorii 2.2')" onmouseout="hideCategoryInfo()">Kształtki z polipropylenu PP-R</a></li>
-                   <li><a href="#" onmouseover="showCategoryInfo('Narzędzia instalacyjne: Opis dla Podkategorii 2.3')" onmouseout="hideCategoryInfo()">Narzędzia instalacyjne</a></li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onclick="showCategoryInfo('Kształtki PEX System skręcany', 'Kształtki PEX System skręcany', '<p>Dodatkowy tekst dla Kształtki PEX System skręcany</p>',
+                             [{ src: 'zdjecia/elo.png', alt: 'LINK1', description: 'ELO1', link: 'link/do/obrazka1' },
+                              { src: 'zdjecia/elo.png', alt: 'LINK2', description: 'ELO2', link: 'link/do/obrazka2' },
+                              { src: 'sciezka/do/zdjecia3.jpg', alt: 'LINK3', description: 'ELO3', link: 'link/do/obrazka3' }])"
+                                onclick="showCategoryInfo('Rury wielowarstwowe PEXb/AL/PE', 'Tekst animacji dla Rur wielowarstwowych', '<p>Dodatkowy tekst dla SYSTEM PE-X</p>', [{ src: 'sciezka/do/zdjecia1.jpg', alt: 'Opis obrazka 1', description: 'Opis obrazka 1', link: 'link/do/obrazka1' }, { src: 'sciezka/do/zdjecia2.jpg', alt: 'Opis obrazka 2', description: 'Opis obrazka 2', link: 'link/do/obrazka2' }, { src: 'sciezka/do/zdjecia3.jpg', alt: 'Opis obrazka 3', description: 'Opis obrazka 3', link: 'link/do/obrazka3' }])">Rury wielowarstwowe<br>PEXb/AL/PE</a>
+                            
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Kształtki PEX System skręcany')">Kształtki PEX<br>System skręcany</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Kształtki PEX PLUS System zaprasowywany')">Kształtki PEX PLUS<br>System zaprasowywany</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Kształtki PEX System zaprasowywany')">Kształtki PEX<br>System zaprasowywany</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Folia ogrzewanie podłogowe')">Folia<br>ogrzewanie podłogowe</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Narzędzia instalacyjne')">Narzędzia instalacyjne</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Narzędzia instalacyjne PEX')">Narzędzia instalacyjne<br>PEX</a>
+                        </li>
                 </ul>
             </li>
             <li class="category">
@@ -215,14 +238,23 @@
 
 
 <div class="white-background" id="category-info">
-    Flormet
+<span>
+<div class="instalacje">
+    
 
-        <button onclick="showCategoryInfo('Rury wielowarstwowe PEXb/AL/PE')">Rury wielowarstwowe PEXb/AL/PE</button>
-        <button onclick="showCategoryInfo('Category 2 Information')">Category 2</button>
+   
+
+    <div class="tekstanimowany">INSTALACJE DLA EKSPERTÓW</div>
+   
+
+</div>
 
 </div>
 <span>
 <div class="flormet">
+
+
+    
 </div>
 
 
@@ -242,8 +274,14 @@
 <div class="flp">
 </div>
 
+
+
+
+
+
+ 
 </div>
-</div>
+
 
 </span>
 </body>
@@ -269,7 +307,7 @@
 
 
 
-category.addEventListener('mouseleave', () => {
+            category.addEventListener('mouseleave', () => {
     setTimeout(() => {
         category.classList.remove('active'); // Usuwamy klasę aktywnej kategorii po krótkim opóźnieniu
     }, 700); // Opóźnienie w milisekundach (tutaj 300ms)
@@ -297,48 +335,99 @@ category.addEventListener('mouseleave', () => {
             }
         }
 
-function showCategoryInfo(info) {
-    console.log("Showing info for category: ", info);
+        
+        var zIndexCounter = 1; // Licznik z-index, który będzie zwiększany przy każdym powiększeniu
+
+function expandImageContainer(imageContainerDiv) {
+    imageContainerDiv.style.transform = 'scale(1.1)'; // Powiększenie do 110%
+    imageContainerDiv.style.transition = 'transform 0.3s ease'; // Dodaj płynną animację
+    imageContainerDiv.style.zIndex = zIndexCounter++; // Ustaw z-index i zwiększ licznik
+}
+
+function resetImageContainer(imageContainerDiv) {
+    imageContainerDiv.style.transform = ''; // Usuń transformację po opuszczeniu
+    imageContainerDiv.style.zIndex = ''; // Usuń z-index
+}
+
+var imageContainers = document.querySelectorAll('.image-container');
+
+imageContainers.forEach(function(imageContainerDiv) {
+    imageContainerDiv.addEventListener('mouseenter', function() {
+        expandImageContainer(imageContainerDiv); // Rozwiń obrazek po najechaniu
+    });
+
+    imageContainerDiv.addEventListener('mouseleave', function() {
+        resetImageContainer(imageContainerDiv); // Zresetuj obrazek po opuszczeniu
+    });
+});
+
+function showCategoryInfo(category, animationText, additionalTextHTML, imageInfoArray) {
+    console.log("Showing info for category: ", category);
     var categoryInfoDiv = document.getElementById("category-info");
-    categoryInfoDiv.textContent = info;
-    categoryInfoDiv.style.display = "block"; // Pokaż div z informacją o kategorii
-}
-
-function hideCategoryInfo() {
-    console.log("Hiding category info");
-    var categoryInfoDiv = document.getElementById("category-info");
-    categoryInfoDiv.style.display = "none"; // Ukryj div z informacją o kategorii
-}
-
-// Zmienna do śledzenia stanu wyświetlonych informacji o kategorii
-var categoryInfoVisible = false;
-
-// Funkcja do wyświetlania lub ukrywania informacji o kategorii w zależności od obecnego stanu
-function toggleCategoryInfo(info) {
-    console.log("Toggling category info visibility");
-
-    // Jeśli informacje o kategorii są widoczne, schowaj je
-    if (categoryInfoVisible) {
-        hideCategoryInfo();
-        categoryInfoVisible = false;
-    } else { // W przeciwnym razie wyświetl informacje o kategorii
-        console.log("Showing info for category: ", info);
-        var categoryInfoDiv = document.getElementById("category-info");
-        categoryInfoDiv.textContent = info;
-        categoryInfoDiv.style.display = "block"; // Pokaż div z informacją o kategorii
-        categoryInfoVisible = true;
-    }
-}
-
-    function highlightOnHover(element) {
-        element.classList.add("highlight-on-hover");
+    categoryInfoDiv.style.display = "flex"; // Ustaw na flexbox
+    categoryInfoDiv.style.flexWrap = "wrap"; // Ustaw wrap dla elementów
+    
+    // Usuń istniejące dzieci z categoryInfoDiv
+    while (categoryInfoDiv.firstChild) {
+        categoryInfoDiv.removeChild(categoryInfoDiv.firstChild);
     }
 
-    // Funkcja do usuwania podświetlenia po opuszczeniu
-    function removeHighlight(element) {
-        element.classList.remove("highlight-on-hover");
-    }
+    // Dodaj div z tekstem animacji
+    var animatedTextDiv = document.createElement("div");
+    animatedTextDiv.classList.add("instalacje");
+    animatedTextDiv.classList.add("tekstanimowany"); 
+    animatedTextDiv.textContent = animationText;
+    categoryInfoDiv.appendChild(animatedTextDiv);
+
+
+    // Dodaj dodatkowy tekst HTML
+    var additionalTextDiv = document.createElement("div");
+    additionalTextDiv.classList.add("additional-text");
+    additionalTextDiv.innerHTML = additionalTextHTML;
+    categoryInfoDiv.appendChild(additionalTextDiv);
+
+    // Dodaj obrazy
+    imageInfoArray.forEach(function(imageInfo) {
+        // Dodaj div dla obrazka
+        var imageContainerDiv = document.createElement("div");
+        imageContainerDiv.classList.add("image-container");
+
+        var imageDiv = document.createElement("img");
+        imageDiv.src = imageInfo.src;
+        imageDiv.alt = imageInfo.alt; // Ustaw alt dla obrazu
+        imageContainerDiv.appendChild(imageDiv);
+
+        if (imageInfo.description) {
+            var descriptionDiv = document.createElement("div");
+            descriptionDiv.textContent = imageInfo.description;
+            descriptionDiv.classList.add("image-description");
+            imageContainerDiv.appendChild(descriptionDiv);
+        }
+
+        // Dodaj dodatkowy opis obrazka
+        if (imageInfo.additionalDescription) {
+            var additionalDescriptionDiv = document.createElement("div");
+            additionalDescriptionDiv.textContent = imageInfo.additionalDescription;
+            additionalDescriptionDiv.classList.add("image-additional-description");
+            imageContainerDiv.appendChild(additionalDescriptionDiv);
+        }
+
+        // Dodaj zdarzenie dla powiększenia okna po najechaniu
+        imageContainerDiv.addEventListener('mouseenter', function() {
+            expandImageContainer(imageContainerDiv);
+        });
+
+        // Dodaj zdarzenie dla przywrócenia tła po opuszczeniu elementu
+        imageContainerDiv.addEventListener('mouseleave', function() {
+            imageContainerDiv.style.transform = ''; // Usuń transformację po opuszczeniu
+        });
+
+        categoryInfoDiv.appendChild(imageContainerDiv);
+    });
+}imageContainerDiv
+
+
+
     </script>
-
-
+</body>
 </html>

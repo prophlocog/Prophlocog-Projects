@@ -1,3 +1,6 @@
+
+
+
 /* Resetowanie stylów domyślnych dla wszystkich elementów */
 * {
     margin: 0;
@@ -11,8 +14,8 @@ body {
     line-height: 1.6; /* Wysokość linii tekstu */
     margin: 0; /* Brak marginesów */
     padding: 0; /* Brak paddingu */
-    transition: background-color 0.5s, color 0.5s;
- overflow: hidden; 
+    transition: background-color 0.2s, color 0.2s;
+
 
     display: row;
 }
@@ -24,6 +27,9 @@ header {
     padding: 1rem 0; /* Padding w nagłówku */
   position: relative;
     z-index: 1;
+    position: fixed;
+   width: 100%;
+
 }
 
 /* Styl dla tytułu w nagłówku */
@@ -103,26 +109,29 @@ main {
     text-align: center; /* Wyśrodkowanie tekstu */
 }
 
-/* PRAWY */
+/* srodkowy box */
 .white-background#category-info {
-    margin-top: -1rem;
-    padding: 10px;
-    margin-top: 1rem;
+    overflow: hidden; 
+    padding: 20px;
+    margin-top: 160px;
     height: 600px;
     max-height: 650px;
     max-width: 1600px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden; 
     background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDE2MDAgMzAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM6c2VyaWY9Imh0dHA6Ly93d3cuc2VyaWYuY29tLyIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxLjU7Ij4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KC0wLjE0NTA3MywtNC43ODMyZS0xOSw0LjEyMzM4ZS0xOSwwLjEyMTY5NCwxNjcwLjAyLC01NzguOTQ3KSI+CiAgICAgICAgPHBhdGggZD0iTTExNTk4LjIsNDgyMC42NEw3MTAwLjA5LDQ4MjAuNjRMODIyNC42MiwzNDIyLjU4TDEwNDczLjcsMzQyMi41OEwxMTU5OC4yLDQ4MjAuNjRaIiBzdHlsZT0iZmlsbDpyZ2IoMCwxNjEsMjU1KTtmaWxsLW9wYWNpdHk6MC45ODtzdHJva2U6d2hpdGU7c3Ryb2tlLXdpZHRoOjcuNDdweDsiLz4KICAgIDwvZz4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KC0wLjEzMjIwMywtMy41OTM5MWUtMTgsLTkuMTQzNDRlLTE4LC0wLjEyMTY2NSwxNjc5LjA5LDYzMy43NzMpIj4KICAgICAgICA8cGF0aCBkPSJNMTA1NjguNiw1OTE0Ljc3TC0yMi4xMTMsNTkxNC43N0wyNjI1LjU4LDUxMTQuNDNMNzkyMC45Niw1MTE0LjQzTDEwNTY4LjYsNTkxNC43N1oiIHN0eWxlPSJmaWxsOnJnYigwLDE2MSwyNTUpO3N0cm9rZTp3aGl0ZTtzdHJva2Utd2lkdGg6Ny44N3B4OyIvPgogICAgPC9nPgogICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoLTAuMTg0NjIsNC40NDk5M2UtMTgsLTEuNzY3MTdlLTE3LC0wLjA5MzAyMzcsMzEyMi4xNywzMzIuMzgxKSI+CiAgICAgICAgPHBhdGggZD0iTTExNTk4LjIsNDgyMC42NEw3MTAwLjA5LDQ4MjAuNjRMODIyNC42MiwzNDIyLjU4TDEwNDczLjcsMzQyMi41OEwxMTU5OC4yLDQ4MjAuNjRaIiBzdHlsZT0iZmlsbDpyZ2IoMzAsMTE0LDE4NCk7c3Ryb2tlOndoaXRlO3N0cm9rZS13aWR0aDo2Ljg0cHg7Ii8+CiAgICA8L2c+Cjwvc3ZnPgo='),
 
  url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDE2MDAgMzAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM6c2VyaWY9Imh0dHA6Ly93d3cuc2VyaWYuY29tLyIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxLjU7Ij4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KC0wLjE0NTA3Myw0Ljc4MzJlLTE5LDQuMTIzMzhlLTE5LC0wLjEyMTY5NCwxNjcwLjAyLDYwOC45NDcpIj4KICAgICAgICA8cGF0aCBkPSJNMTE1OTguMiw0ODIwLjY0TDcxMDAuMDksNDgyMC42NEw4MjI0LjYyLDM0MjIuNThMMTA0NzMuNywzNDIyLjU4TDExNTk4LjIsNDgyMC42NFoiIHN0eWxlPSJmaWxsOnJnYigwLDE2MSwyNTUpO2ZpbGwtb3BhY2l0eTowLjk4OyIvPgogICAgPC9nPgogICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoLTAuMTMyMjAzLDMuNTkzOTFlLTE4LC05LjE0MzQ0ZS0xOCwwLjEyMTY2NSwxNjc5LjA5LC02MDMuNzczKSI+CiAgICAgICAgPHBhdGggZD0iTTEwNTY4LjYsNTkxNC43N0wtMjIuMTEzLDU5MTQuNzdMMjYyNS41OCw1MTE0LjQzTDc5MjAuOTYsNTExNC40M0wxMDU2OC42LDU5MTQuNzdaIiBzdHlsZT0iZmlsbDpyZ2IoMCwxNjEsMjU1KTtzdHJva2U6d2hpdGU7c3Ryb2tlLXdpZHRoOjcuODdweDsiLz4KICAgIDwvZz4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KC0wLjE4NDYyLC00LjQ0OTkzZS0xOCwtMS43NjcxN2UtMTcsMC4wOTMwMjM3LDMxMjIuMTcsLTMwMi4zODEpIj4KICAgICAgICA8cGF0aCBkPSJNMTE1OTguMiw0ODIwLjY0TDcxMDAuMDksNDgyMC42NEw4MjI0LjYyLDM0MjIuNThMMTA0NzMuNywzNDIyLjU4TDExNTk4LjIsNDgyMC42NFoiIHN0eWxlPSJmaWxsOnJnYigzMCwxMTQsMTg0KTtzdHJva2U6d2hpdGU7c3Ryb2tlLXdpZHRoOjYuODRweDsiLz4KICAgIDwvZz4KPC9zdmc+Cg=='); /* Tutaj wklej kod base64 obrazka */
   
   background-position: center top, center bottom;
     background-repeat: no-repeat, no-repeat;
+    
 
 }
-
 
 
 form {
@@ -327,6 +336,57 @@ input[type="submit"]:hover {
 
 }
 
+/* instalacje dla ekskertów  */
+
+
+.instalacje {
+    margin-left: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    animation: moveAnimation 12s linear infinite; /* Animacja przesuwania elementu */
+    font-family: Arial, sans-serif;
+    margin-top: 0rem;
+    position: absolute; /* Absolutne pozycjonowanie, aby umożliwić przesuwanie */
+    overflow: hidden; /* Ukrycie części wychodzących poza widoczny obszar */
+    height: 40px;
+    animation: moveRight 11s linear infinite; 
+}
+
+@keyframes moveAnimation {
+    0% {
+    
+        filter: blur(3px);
+    }
+    100% {
+
+        filter: blur(0px);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(-700px);
+    }
+    100% {
+        transform: translateX(1400px);
+    }
+
+    
+  
+}
+.tekstanimowany {
+    border-radius: 1rem;
+font-size: 2em;
+color: black;
+padding: 20px;
+text-align: center;
+background-color: rgba(255, 255, 255, 0.8); /* Optional: slight background to make text more readable */
+
+}
+
+
 
 
 /* Układ strony */
@@ -334,21 +394,22 @@ input[type="submit"]:hover {
 
 
 margin-left: 3rem;
-    width: 400px;
+    width: 380px;
     background-color: #fff;
   
 text-align: center;
-   padding-top: 25px;
-
+ 
+margin-top: 12.4rem; 
 border-radius: 5px;
 }
 
 /* Styl dla listy kategorii */
 .categories {
-margin-top: 0rem;
+
     list-style: none;
 height: 560px;
 overflow-y: auto;
+max-height: 477px;
 }
 
 
@@ -365,6 +426,120 @@ overflow-y: auto;
   background-color: #1e72b8; /* Kolor kciuka paska przewijania po najechaniu */
 }
 
+/* animacja produktowa */
+
+@keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+/* Definicja animacji dla tekstu dodatkowego */
+@keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Stylowanie dodatkowego tekstu */
+  .additional-text {
+    max-width: 100px;
+    max-height: 100px;
+    background-color: #fff;
+    display: block;
+    opacity: 0;
+    animation: slideInFromLeft 1s ease forwards; /* Dodaj animację slideInFromLeft */
+  }
+  
+  /* Definicja animacji dla opisów obrazków */
+  @keyframes slideInFromLeftImageDescription {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Stylowanie opisów obrazków */
+  .image-description {
+   
+    display: block;
+    opacity: 0;
+    animation: slideInFromLeftImageDescription 0.5s ease forwards; /* Dodaj animację slideInFromLeftImageDescription */
+  }
+  
+  /* Definicja animacji dla opisu pod obrazem */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+
+  
+  /* Stylowanie obiektu zawierającego obrazki */
+
+    .image-container {
+        margin-top: 4rem;
+        position: relative;
+    overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: inherit;
+        text-align: center;
+        max-width: 200px;
+        max-height: 200px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex: 1 1 200px; /* Dodane */
+        
+        
+    }
+  }
+
+  .image-container:hover {
+    background-color: #f0f0f0;
+}
+  
+  /* Stylowanie obrazków */
+  img {
+    display: block; /* Ustawienie obrazków jako bloki, aby mogły być animowane */
+    width: 100px;
+    height: 100px; /* Ustawienie szerokości na 100% */
+    opacity: 0; /* Początkowo ukryj obrazek */
+    animation: slideInFromLeft 0.5s ease forwards; /* Dodaj animację slideInFromLeft */
+  }
+  /* Dodaj opóźnienie dla każdego kolejnego obrazka */
+  img:nth-child(1) {
+    animation-delay: 0.5s;
+  }
+ 
+  
+  /* Kontynuuj dla kolejnych obrazków, dodając odpowiednie opóźnienia */
+
+
+
+
+
+
+  
 
 /* Styl dla każdej kategorii */
 .category {
@@ -390,7 +565,7 @@ margin-left: 5px;
  margin-right: 0px;
   background-size: contain; /* Dopasowanie obrazka do wielkości */
   background-position: center center;/* center poziomo, 20% wysokości od góry */
-  background-padding: 20px 10px;
+
   background-repeat: no-repeat;
 
 
@@ -569,7 +744,7 @@ font-size: 17px;
 margin-left: 9px;
 padding: 10px;
 margin-right: 23px;
-margin-top: 25px;
+margin-top: 11.2rem;
 height: 65px;
 width: 180px;  
 background-repeat: no-repeat;
@@ -660,11 +835,12 @@ background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmN
    
 
     visibility: hidden; /* Ukrywamy element */
-    animation: slideIn 0.2s ease forwards 1s; /* Dodajemy opóźnienie 1s */
+    animation: slideIn 0.5s ease forwards 0.9s; /* Dodajemy opóźnienie 1s */
     opacity: 0;
     overflow: hidden; /* Ukrywamy nadmiarowy obszar */
 
 }
+
 
 
 
@@ -683,7 +859,7 @@ background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmN
    
 
     visibility: hidden; /* Ukrywamy element */
-    animation: slideIn 0.6s ease forwards 0.8s; /* Dodajemy opóźnienie 1s */
+    animation: slideIn 0.7s ease forwards 1.1s; /* Dodajemy opóźnienie 1s */
     opacity: 0;
     overflow: hidden; /* Ukrywamy nadmiarowy obszar */
 
@@ -695,10 +871,10 @@ background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmN
 {
 margin-right: 10px;
 padding: 10px;
-margin-left: 15.5px;
+margin-left: 10.5px;
 margin-top: 5px;
 height: 195px;
-width: 180px;
+width: 195px;
 background-repeat: no-repeat;
 
 
@@ -706,9 +882,10 @@ background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmN
    
 
     visibility: hidden; /* Ukrywamy element */
-    animation: slideIn 0.9s ease forwards 1.1s; /* Dodajemy opóźnienie 1s */
+    animation: slideIn 0.6s ease forwards 1.3s; /* Dodajemy opóźnienie 1s */
     opacity: 0;
     overflow: hidden; /* Ukrywamy nadmiarowy obszar */
+
 
 }
 
@@ -784,6 +961,30 @@ input:checked + .slider:before {
 .dark-mode {
     background-color: #222; /* Ciemne tło */
     color: #fff; /* Jasny kolor tekstu */
+    
+}
+
+
+.dark-mode .instalacje {
+    background: #222; /* Ciemne tło */
+    animation: darkBackgroundAnimation 10s ease infinite;
+   
+}
+
+@keyframes darkBackgroundAnimation {
+    0%, 100% {
+        background: rgba(34, 34, 34, 0);
+        filter: blur(0px);
+    }
+    50% {
+        background: rgba(34, 34, 34, 0.8);
+        filter: blur(10px);
+    }
+}
+
+.dark-mode .tekstanimowany {
+    color: #fff; /* Jasny kolor tekstu */
+    background-color: rgba(34, 34, 34, 0.8); /* Opcjonalne: lekki background, aby tekst był bardziej czytelny */
 }
 
 
@@ -797,6 +998,10 @@ body.dark-mode nav ul li:nth-child(n+2):nth-child(-n+9) {
 .dark-mode footer {
     background-color: #222; /* Ciemne tło stopki */
 }
+
+
+
+
 /* Dodatkowe stylowanie dla bardzo dużych ekranów o szerokości minimalnej 1600px */
 @media (min-width: 1600px) {
     body {
@@ -844,7 +1049,7 @@ display: flex;
 
 /* Dodatkowe stylowanie dla ciemnego trybu dla bocznego menu */
 .dark-mode .sidebar {
-    background-color: #333; /* Kolor tła bocznego menu w trybie ciemnym */
+    background-color: #222; /* Kolor tła bocznego menu w trybie ciemnym */
     color: #fff; /* Kolor tekstu w bocznym menu w trybie ciemnym */
 }
 
@@ -867,6 +1072,7 @@ display: flex;
 .dark-mode nav ul li {
     border-color: white; /* Kolor obramowania */
 }
+
 
 
 /* Styl dla dodatkowego kontentu z białym tłem */
@@ -914,6 +1120,7 @@ z-index: 1;
     .highlight-on-hover {
   background-color: rgba(255, 255, 255, 0.5); /* Białe tło z przezroczystością 50% */
   backdrop-filter: blur(5px); /* Rozmycie tła */
+  
     }
 
 /* MANIPULACJA MENU LEWYM */

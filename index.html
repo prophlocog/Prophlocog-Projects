@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Responsywna Strona</title>
+    <!-- Link do pliku CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="normalize.css">
+</head>
+
+    <!-- Nagłówek strony -->
+    <header>
+        <!-- Tytuł strony -->
+        <h1>Moja Responsywna Strona</h1>
+        <!-- Nawigacja -->
+        <nav>
+            <ul>
+                <li>    
+                    <form action="search.php" method="get">
+                        <input type="text" name="query" placeholder="Wyszukaj...">
+                        <input type="submit" value="Szukaj">
+                    </form>
+                </li>
+                <li><a href="#">Witamy</a></li>
+                <li><a href="#">Dlaczego My</a></li>
+                <li><a href="#">Nasza Oferta</a></li>
+                <li><a href="#">Konkurs</a></li>
+                <li><a href="#">Zostań klientem</a></li>
+                <li><a href="#">Social Media</a></li>
+                <li><a href="#">Kontakt</a></li>
+                <li><label class="switch">
+                    <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+                    <span class="slider"></span>
+                </label>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+   <body>
+
+
+    <div class="container1">
+        <aside class="sidebar">
+           
+            <ul class="categories">
+                <h2>Kategorie</h2>
+                <li class="category">
+                    <a href="#" onmouseover="showCategoryInfo(
+                                '', 
+                                'INSTALACJE DLA ESKPERTÓW', 
+                                '', 
+                                [
+                                    { src: 'zdjecia/FLD-023.png', alt: 'LINK1', description: 'ELO1', additionalDescription: 'Opis dla obrazka 1' }
+                                
+                                ])">SYSTEM PE-X</a>
+
+
+
+                    <ul class="submenu submenu3">
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onclick="showCategoryInfo(
+                                '', 
+                                'INSTALACE DLA ESKPERTÓW', 
+                                '', 
+                                [
+                                    { src: 'zdjecia/rura_wielo.jpg', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
+                                    { src: 'zdjecia/rura2.png', alt: 'LINK2', description: 'RURA FLP ULTRA', additionalDescription: 'Rozmiar' },
+                                    { src: 'zdjecia/wielo — kopia2.jpg', alt: 'LINK3', description: 'RURA FLP W OTULINIE', additionalDescription: 'Rozmiar' }
+                                ])">
+                                
+                                Rury wielowarstwowe<br>PEXb/AL/PE
+                            </a>
+                        </li>
+
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onclick="showCategoryInfo(
+                                  '', 
+                                  'Kształtki PEX System skręcany',
+                                   '',
+
+                            [{ src: 'zdjecia/elo.png', alt: 'LINK1', description: 'ELO1', link: 'link/do/obrazka1', additionalDescription: 'Rozmiar' },
+                              { src: 'zdjecia/elo.png', alt: 'LINK2', description: 'ELO2', link: 'link/do/obrazka2', additionalDescription: 'Rozmiar' },
+                              { src: 'sciezka/do/zdjecia3.jpg', alt: 'LINK3', description: 'ELO3', link: 'link/do/obrazka3', additionalDescription: 'Rozmiar'  }
+                              ])">
+                              
+                              Kształtki Pex<br> System skręcany</a>
+                            </li>
+
+
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Kształtki PEX System skręcany')">Kształtki PEX<br>System skręcany</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Kształtki PEX PLUS System zaprasowywany')">Kształtki PEX PLUS<br>System zaprasowywany</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Kształtki PEX System zaprasowywany')">Kształtki PEX<br>System zaprasowywany</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Folia ogrzewanie podłogowe')">Folia<br>ogrzewanie podłogowe</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Narzędzia instalacyjne')">Narzędzia instalacyjne</a>
+                        </li>
+                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                            <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Narzędzia instalacyjne PEX')">Narzędzia instalacyjne<br>PEX</a>
+                        </li>
+                </ul>
+            </li>
+            <li class="category">
+                <a href="#">ŁĄCZNIKI</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Kształtki mosiężne gwintowane: Opis dla Podkategorii 3.1')" onmouseout="hideCategoryInfo()">Kształtki mosiężne gwintowane</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Kształtki mosiężne gwintowane chrom')" onmouseout="hideCategoryInfo()">Kształtki mosiężne gwintowane chrom</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Kształtki miedziane i mosiężne do wlutu: Opis dla Podkategorii 3.3')" onmouseout="hideCategoryInfo()">Kształtki miedziane i mosiężne do wlutu</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Kształtki żeliwne spawalnicze: Opis dla Podkategorii 3.1')" onmouseout="hideCategoryInfo()">Kształtki żeliwne spawalnicze</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Kształtki żeliwne gwintowane: Opis dla Podkategorii 3.2')" onmouseout="hideCategoryInfo()">Kształtki żeliwne gwintowane</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Króćce gwintowane: Opis dla Podkategorii 3.3')" onmouseout="hideCategoryInfo()">Króćce gwintowane</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <a href="#">ROZDZIELACZE</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Wentylatory nadmuchowe: Opis dla Podkategorii 4.1')" onmouseout="hideCategoryInfo()">Wentylatory nadmuchowe</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Grupa bezpieczeństwa: Opis dla Podkategorii 4.2')" onmouseout="hideCategoryInfo()">Grupa bezpieczeństwa</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Rozdzielacze mosiężne: Opis dla Podkategorii 4.3')" onmouseout="hideCategoryInfo()">Rozdzielacze mosiężne</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Szafki rozdzielaczy: Opis dla Podkategorii 4.1')" onmouseout="hideCategoryInfo()">Szafki rozdzielaczy</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Grupy pompowe: Opis dla Podkategorii 4.2')" onmouseout="hideCategoryInfo()">Grupy pompowe</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Układy przyłączeniowe i pompy: Opis dla Podkategorii 4.3')" onmouseout="hideCategoryInfo()">Układy przyłączeniowe i pompy</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Separator magnetyczny : Opis dla Podkategorii 4.1')" onmouseout="hideCategoryInfo()">Separator magnetyczny </a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Akcesoria: Opis dla Podkategorii 4.2')" onmouseout="hideCategoryInfo()">Akcesoria</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Termometry i manometry: Opis dla Podkategorii 4.3')" onmouseout="hideCategoryInfo()">Termometry i manometry</a></li>
+                </ul>
+            </li>
+
+
+
+     <li class="category">
+                <a href="#">GRZEJNIKI</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Grzejniki łazienkowe : Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Grzejniki łazienkowe </a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Głowice termostatyczne : Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Głowice termostatyczne </a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory termostatyczne z nastawą: Opis dla Podkategorii 5.2')" onmouseout="hideCategoryInfo()">Zawory termostatyczne z nastawą</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory termostatyczne bez nastawy: Opis dla Podkategorii 5.3')" onmouseout="hideCategoryInfo()">Zawory termostatyczne bez nastawy</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory grzejnikowe: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Zawory grzejnikowe</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Przyłącza grzejnikowe: Opis dla Podkategorii 5.2')" onmouseout="hideCategoryInfo()">Przyłącza grzejnikowe</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Akcesoria grzejnikowe: Opis dla Podkategorii 5.3')" onmouseout="hideCategoryInfo()">Akcesoria grzejnikowe</a></li>
+                </ul>
+            </li>
+
+
+            <li class="category">
+                <a href="#">AUTOMATYKA</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Regulatory temperatury: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Regulatory temperatury</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Centrale sterujące: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Centrale sterujące</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Sterowniki do piecy: Opis dla Podkategorii 5.2')" onmouseout="hideCategoryInfo()">Sterowniki do piecy</a></li>
+
+
+                </ul>
+            </li>
+
+     <li class="category">
+                <a href="#">ZAWORY</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory kątowe wodne : Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Zawory kątowe wodne </a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory kulowe MINI: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Zawory kulowe MINI</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory SENA: Opis dla Podkategorii 5.2')" onmouseout="hideCategoryInfo()">Zawory SENA</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory do kotłów gazowych : Opis dla Podkategorii 5.3')" onmouseout="hideCategoryInfo()">Zawory do kotłów gazowych p</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory TURIA, TAJO, MINO')" onmouseout="hideCategoryInfo()">Zawory TURIA, TAJO, MINO</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory kulowe czerpalne : Opis dla Podkategorii 5.2')" onmouseout="hideCategoryInfo()">Zawory kulowe czerpalne </a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory żeliwne: Opis dla Podkategorii 5.3')" onmouseout="hideCategoryInfo()">Zawory żeliwne</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory uzupełniające: Opis dla Podkategorii 5.3')" onmouseout="hideCategoryInfo()">Zawory uzupełniające</a></li>
+                </ul>
+            </li>
+
+
+   <li class="category">
+                <a href="#">BATERIE</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Baterie Flormet : Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Baterie Flormet</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Słuchawki węże natryskowe: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Słuchawki węże natryskowe</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Korki automatyczne: Opis dla Podkategorii 5.2')" onmouseout="hideCategoryInfo()">Korki automatyczne</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory i wylewki: Opis dla Podkategorii 5.3')" onmouseout="hideCategoryInfo()">Zawory i wylewki</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Części i akcesoria')" onmouseout="hideCategoryInfo()">Części i akcesoria</a></li>
+
+                </ul>
+            </li>
+
+   <li class="category">
+                <a href="#">WĘŻE PRZYŁĄCZENIOWE</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Węże do baterii : Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Węże do baterii</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Węże sanitarne uniwersalne: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Węże sanitarne uniwersalne</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Węże o zwiększonym przepływie: Opis dla Podkategorii 5.2')" onmouseout="hideCategoryInfo()">Węże o zwiększonym przepływie</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Węże o pełnym przepływie: Opis dla Podkategorii 5.3')" onmouseout="hideCategoryInfo()">Węże o pełnym przepływie</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Węże do gazu')" onmouseout="hideCategoryInfo()">Węże do gazu</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Węże do pralki')" onmouseout="hideCategoryInfo()">Węże do pralki</a></li>
+
+                </ul>
+            </li>
+
+
+   <li class="category">
+                <a href="#">SYFONY I ODPŁYWY</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Syfony sanitarne: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Syfony sanitarne</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Węże sanitarne uniwersalne: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Odpływy i kratki</a></li>
+
+
+                </ul>
+            </li>
+
+
+   <li class="category">
+                <a href="#">ARMATURA WC</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Stelaże podtynkowe i przyciski: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Stelaże podtynkowe i przyciski</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Zawory napełniające i spustowe: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Zawory napełniające i spustowe</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Przyłącza WC: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Przyłącza WC</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Deski sedesowe: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Deski sedesowe</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Spłuczki: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Spłuczki</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Części i akcesoria: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">OdpCzęści i akcesoria</a></li>
+
+
+                </ul>
+            </li>
+
+
+   <li class="category">
+                <a href="#">FILTRACJA WODY</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Uzdatniacze wody: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Uzdatniacze wody</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Filtry i wkłady: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Filtry i wkłady</a></li>
+
+
+                </ul>
+            </li>
+
+   <li class="category">
+                <a href="#">UZUPEŁNIENIE</a>
+                <ul class="submenu">
+                   <li><a href="#" onmouseover="showCategoryInfo('Uszczelniacze i taśmy: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Uszczelniacze i taśmy</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Narzędzia do uszczelnień: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Narzędzia do uszczelnień</a></li>
+                   <li><a href="#" onmouseover="showCategoryInfo('Uchwyty montażowe: Opis dla Podkategorii 5.1')" onmouseout="hideCategoryInfo()">Uchwyty montażowe</a></li>
+
+                </ul>
+            </li>
+
+
+
+
+        </ul>
+    </aside>
+
+
+<div class="white-background" id="category-info">
+<span>
+<div class="instalacje">
+    
+
+   
+
+    <div class="tekstanimowany">INSTALACJE DLA EKSPERTÓW</div>
+   
+
+</div>
+
+</div>
+<span>
+<div class="flormet">
+
+
+    
+</div>
+
+
+<div class="arco">
+</div>
+
+<div class="tupy">
+
+</div>
+
+<div class="flexitub">
+</div>
+
+<div class="jimten">
+</div>
+
+<div class="flp">
+</div>
+
+
+
+
+
+
+ 
+</div>
+
+
+</span>
+
+    <!-- Stopka strony -->
+    <footer>
+        <!-- Tekst w stopce -->
+        <p>&copy; 2024 Moja Firma. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <!-- JavaScript na końcu ciała dokumentu -->
+    <script>
+
+            // Funkcja wywoływana po najechaniu kursorem na link "SYSTEM PE-X"
+    function showImage() {
+        // Pobierz element obrazu
+        var hoverImage = document.getElementById('hoverImage');
+        // Ustaw atrybuty obrazu
+        hoverImage.src = 'sciezka/do/zdjecia/system-pex.jpg';
+        // Pokaż okno white-background
+        document.getElementById('whiteBackground').style.display = 'block';
+    }
+        // Pobieramy wszystkie kategorie
+        const categories = document.querySelectorAll('.category');
+
+        // Iterujemy przez każdą kategorię
+        categories.forEach(category => {
+            // Ustawiamy zdarzenie na najechanie kursorem na kategorię
+            category.addEventListener('mouseenter', () => {
+                category.classList.add('active'); // Dodajemy klasę aktywnej kategorii
+            });
+
+            // Ustawiamy zdarzenie na zjechanie kursorem z kategorii
+
+
+
+            category.addEventListener('mouseleave', () => {
+    setTimeout(() => {
+        category.classList.remove('active'); // Usuwamy klasę aktywnej kategorii po krótkim opóźnieniu
+    }, 700); // Opóźnienie w milisekundach (tutaj 300ms)
+});
+
+
+        });
+
+        function toggleDarkMode() {
+            var body = document.body;
+            body.classList.toggle("dark-mode");
+            // Zapamiętaj stan trybu ciemnego w localStorage
+            if (body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        }
+
+        // Sprawdź stan trybu ciemnego przy załadowaniu strony
+        window.onload = function() {
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+                document.getElementById("darkModeToggle").checked = true;
+            }
+        }
+
+        
+        var zIndexCounter = 1; // Licznik z-index, który będzie zwiększany przy każdym powiększeniu
+
+function expandImageContainer(imageContainerDiv) {
+    imageContainerDiv.style.transform = 'scale(1.1)'; // Powiększenie do 110%
+    imageContainerDiv.style.transition = 'transform 0.3s ease'; // Dodaj płynną animację
+    imageContainerDiv.style.zIndex = zIndexCounter++; // Ustaw z-index i zwiększ licznik
+}
+
+function resetImageContainer(imageContainerDiv) {
+    imageContainerDiv.style.transform = ''; // Usuń transformację po opuszczeniu
+    imageContainerDiv.style.zIndex = ''; // Usuń z-index
+}
+
+var imageContainers = document.querySelectorAll('.image-container');
+
+imageContainers.forEach(function(imageContainerDiv) {
+    imageContainerDiv.addEventListener('mouseenter', function() {
+        expandImageContainer(imageContainerDiv); // Rozwiń obrazek po najechaniu
+    });
+
+    imageContainerDiv.addEventListener('mouseleave', function() {
+        resetImageContainer(imageContainerDiv); // Zresetuj obrazek po opuszczeniu
+    });
+});
+
+function showCategoryInfo(category, animationText, additionalTextHTML, imageInfoArray) {
+    console.log("Showing info for category: ", category);
+    var categoryInfoDiv = document.getElementById("category-info");
+    categoryInfoDiv.style.display = "flex"; // Ustaw na flexbox
+    categoryInfoDiv.style.flexWrap = "wrap"; // Ustaw wrap dla elementów
+    
+    // Usuń istniejące dzieci z categoryInfoDiv
+    while (categoryInfoDiv.firstChild) {
+        categoryInfoDiv.removeChild(categoryInfoDiv.firstChild);
+    }
+
+    // Dodaj div z tekstem animacji
+    var animatedTextDiv = document.createElement("div");
+    animatedTextDiv.classList.add("instalacje");
+    animatedTextDiv.classList.add("tekstanimowany"); 
+    animatedTextDiv.textContent = animationText;
+    categoryInfoDiv.appendChild(animatedTextDiv);
+
+
+    // Dodaj dodatkowy tekst HTML
+    var additionalTextDiv = document.createElement("div");
+    additionalTextDiv.classList.add("additional-text");
+    additionalTextDiv.innerHTML = additionalTextHTML;
+    categoryInfoDiv.appendChild(additionalTextDiv);
+
+    // Dodaj obrazy
+    imageInfoArray.forEach(function(imageInfo) {
+        // Dodaj div dla obrazka
+        var imageContainerDiv = document.createElement("div");
+        imageContainerDiv.classList.add("image-container");
+
+        var imageDiv = document.createElement("img");
+        imageDiv.src = imageInfo.src;
+        imageDiv.alt = imageInfo.alt; // Ustaw alt dla obrazu
+        imageContainerDiv.appendChild(imageDiv);
+
+        if (imageInfo.description) {
+            var descriptionDiv = document.createElement("div");
+            descriptionDiv.textContent = imageInfo.description;
+            descriptionDiv.classList.add("image-description");
+            imageContainerDiv.appendChild(descriptionDiv);
+        }
+
+        // Dodaj dodatkowy opis obrazka
+        if (imageInfo.additionalDescription) {
+            var additionalDescriptionDiv = document.createElement("div");
+            additionalDescriptionDiv.textContent = imageInfo.additionalDescription;
+            additionalDescriptionDiv.classList.add("image-additional-description");
+            imageContainerDiv.appendChild(additionalDescriptionDiv);
+        }
+
+        // Dodaj zdarzenie dla powiększenia okna po najechaniu
+        imageContainerDiv.addEventListener('mouseenter', function() {
+            expandImageContainer(imageContainerDiv);
+        });
+
+        // Dodaj zdarzenie dla przywrócenia tła po opuszczeniu elementu
+        imageContainerDiv.addEventListener('mouseleave', function() {
+            imageContainerDiv.style.transform = ''; // Usuń transformację po opuszczeniu
+        });
+
+        categoryInfoDiv.appendChild(imageContainerDiv);
+    });
+}imageContainerDiv
+
+
+
+    </script>
+</body>
+</html>

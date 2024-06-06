@@ -27,7 +27,7 @@ header {
     padding: 1rem 0; /* Padding w nagłówku */
   position: relative;
     z-index: 1;
-    position: fixed;
+
    width: 100%;
 
 }
@@ -77,13 +77,7 @@ nav ul li a {
 }
 
 /* Styl dla głównej zawartości strony */
-main {
-    padding: 4rem 2rem; /* Zwiększenie paddingu na górze strony, aby zawartość nie zasłaniała nagłówka */
-    text-align: center; /* Wyśrodkowanie tekstu */
-    margin-top: 6rem; /* Dodanie marginesu na górze, aby zawartość nie zachodziła na nagłówek */
 
-
-}
 
 
 
@@ -104,10 +98,6 @@ nav ul li a {
 }
 
 /* Styl dla głównej zawartości strony */
-main {
-    padding: 0rem; /* Padding wewnętrzny */
-    text-align: center; /* Wyśrodkowanie tekstu */
-}
 
 /* srodkowy box */
 .white-background#category-info {
@@ -122,7 +112,7 @@ main {
     backdrop-filter: blur(10px);
     display: flex;
     flex-wrap: wrap;
-    overflow: hidden; 
+    
     background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDE2MDAgMzAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM6c2VyaWY9Imh0dHA6Ly93d3cuc2VyaWYuY29tLyIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxLjU7Ij4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KC0wLjE0NTA3MywtNC43ODMyZS0xOSw0LjEyMzM4ZS0xOSwwLjEyMTY5NCwxNjcwLjAyLC01NzguOTQ3KSI+CiAgICAgICAgPHBhdGggZD0iTTExNTk4LjIsNDgyMC42NEw3MTAwLjA5LDQ4MjAuNjRMODIyNC42MiwzNDIyLjU4TDEwNDczLjcsMzQyMi41OEwxMTU5OC4yLDQ4MjAuNjRaIiBzdHlsZT0iZmlsbDpyZ2IoMCwxNjEsMjU1KTtmaWxsLW9wYWNpdHk6MC45ODtzdHJva2U6d2hpdGU7c3Ryb2tlLXdpZHRoOjcuNDdweDsiLz4KICAgIDwvZz4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KC0wLjEzMjIwMywtMy41OTM5MWUtMTgsLTkuMTQzNDRlLTE4LC0wLjEyMTY2NSwxNjc5LjA5LDYzMy43NzMpIj4KICAgICAgICA8cGF0aCBkPSJNMTA1NjguNiw1OTE0Ljc3TC0yMi4xMTMsNTkxNC43N0wyNjI1LjU4LDUxMTQuNDNMNzkyMC45Niw1MTE0LjQzTDEwNTY4LjYsNTkxNC43N1oiIHN0eWxlPSJmaWxsOnJnYigwLDE2MSwyNTUpO3N0cm9rZTp3aGl0ZTtzdHJva2Utd2lkdGg6Ny44N3B4OyIvPgogICAgPC9nPgogICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoLTAuMTg0NjIsNC40NDk5M2UtMTgsLTEuNzY3MTdlLTE3LC0wLjA5MzAyMzcsMzEyMi4xNywzMzIuMzgxKSI+CiAgICAgICAgPHBhdGggZD0iTTExNTk4LjIsNDgyMC42NEw3MTAwLjA5LDQ4MjAuNjRMODIyNC42MiwzNDIyLjU4TDEwNDczLjcsMzQyMi41OEwxMTU5OC4yLDQ4MjAuNjRaIiBzdHlsZT0iZmlsbDpyZ2IoMzAsMTE0LDE4NCk7c3Ryb2tlOndoaXRlO3N0cm9rZS13aWR0aDo2Ljg0cHg7Ii8+CiAgICA8L2c+Cjwvc3ZnPgo='),
 
  url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDE2MDAgMzAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM6c2VyaWY9Imh0dHA6Ly93d3cuc2VyaWYuY29tLyIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxLjU7Ij4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KC0wLjE0NTA3Myw0Ljc4MzJlLTE5LDQuMTIzMzhlLTE5LC0wLjEyMTY5NCwxNjcwLjAyLDYwOC45NDcpIj4KICAgICAgICA8cGF0aCBkPSJNMTE1OTguMiw0ODIwLjY0TDcxMDAuMDksNDgyMC42NEw4MjI0LjYyLDM0MjIuNThMMTA0NzMuNywzNDIyLjU4TDExNTk4LjIsNDgyMC42NFoiIHN0eWxlPSJmaWxsOnJnYigwLDE2MSwyNTUpO2ZpbGwtb3BhY2l0eTowLjk4OyIvPgogICAgPC9nPgogICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoLTAuMTMyMjAzLDMuNTkzOTFlLTE4LC05LjE0MzQ0ZS0xOCwwLjEyMTY2NSwxNjc5LjA5LC02MDMuNzczKSI+CiAgICAgICAgPHBhdGggZD0iTTEwNTY4LjYsNTkxNC43N0wtMjIuMTEzLDU5MTQuNzdMMjYyNS41OCw1MTE0LjQzTDc5MjAuOTYsNTExNC40M0wxMDU2OC42LDU5MTQuNzdaIiBzdHlsZT0iZmlsbDpyZ2IoMCwxNjEsMjU1KTtzdHJva2U6d2hpdGU7c3Ryb2tlLXdpZHRoOjcuODdweDsiLz4KICAgIDwvZz4KICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KC0wLjE4NDYyLC00LjQ0OTkzZS0xOCwtMS43NjcxN2UtMTcsMC4wOTMwMjM3LDMxMjIuMTcsLTMwMi4zODEpIj4KICAgICAgICA8cGF0aCBkPSJNMTE1OTguMiw0ODIwLjY0TDcxMDAuMDksNDgyMC42NEw4MjI0LjYyLDM0MjIuNThMMTA0NzMuNywzNDIyLjU4TDExNTk4LjIsNDgyMC42NFoiIHN0eWxlPSJmaWxsOnJnYigzMCwxMTQsMTg0KTtzdHJva2U6d2hpdGU7c3Ryb2tlLXdpZHRoOjYuODRweDsiLz4KICAgIDwvZz4KPC9zdmc+Cg=='); /* Tutaj wklej kod base64 obrazka */
@@ -151,6 +141,7 @@ height: 0px;
 
 /* Responsywność dla ekranów o szerokości maksymalnej 768px */
 @media (max-width: 768px) {
+
     nav ul {
         flex-direction: column; /* Zmiana układu na kolumnowy */
     }
@@ -175,30 +166,9 @@ height: 0px;
     }
 }
 
-/* Stylowanie dla większych ekranów o szerokości minimalnej 1080px */
-@media (min-width: 1080px) {
-    body {
-        max-width: 1080px; /* Maksymalna szerokość strony */
-        margin: 0 auto; /* Wyśrodkowanie strony */
-    }
 
-    header, main, footer {
-        padding-left: 2rem; /* Dodanie paddingu po lewej stronie */
-        padding-right: 2rem; /* Dodanie paddingu po prawej stronie */
-    }
 
-    header h1 {
-        font-size: 2.5rem; /* Zwiększenie rozmiaru czcionki tytułu */
-    }
 
-    main {
-        text-align: left; /* Wyrównanie tekstu do lewej */
-    }
-
-    footer {
-        position: relative; /* Usunięcie stałej pozycji stopki */
-    }
-}
 
 
 
@@ -251,10 +221,32 @@ input[type="submit"]:hover {
 
 
 
+/* Stylowanie paska przewijania */
+::-webkit-scrollbar {
+    width: 5px; /* Szerokość paska przewijania */
+    height: 3px; /* Wysokość paska przewijania */
+}
 
+/* Pasek przewijania w poziomie */
+::-webkit-scrollbar-track {
+    background-color: transparent; /* Transparentne tło paska przewijania */
+}
 
+/* Suwak paska przewijania */
+::-webkit-scrollbar-thumb {
+    background-color: #00A1FF; /* Kolor tła suwaka */
+    border-radius: 6px; /* Zakrzywienie rogów suwaka */
+}
 
+/* Kiedy najechanie myszą na suwak */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Kolor tła suwaka po najechaniu myszą */
+}
 
+/* Umieść pasek przewijania na dolnej krawędzi */
+::-webkit-scrollbar-corner {
+    background-color: transparent; /* Transparentne tło rogu paska przewijania */
+}
 
 
 
@@ -282,6 +274,7 @@ input[type="submit"]:hover {
         position: relative; /* Usunięcie stałej pozycji stopki */
     }
 
+    
 /* Responsywność dla ekranów o szerokości maksymalnej 768px */
 @media (max-width: 768px) {
     nav ul {
@@ -291,6 +284,11 @@ input[type="submit"]:hover {
     nav ul li {
         margin: 0.5rem 0; /* Zmniejszenie marginesów */
     }
+
+    
+
+
+    
 }
 
 /* Responsywność dla ekranów o szerokości maksymalnej 480px */
@@ -306,12 +304,20 @@ input[type="submit"]:hover {
     footer {
         font-size: 0.8rem; /* Zmniejszenie rozmiaru czcionki stopki */
     }
+    
 }
 
 
 
 /* Stylowanie dla większych ekranów o szerokości minimalnej 1080px */
 @media (min-width: 1080px) {
+
+
+
+
+
+
+
     body {
         max-width: 1080px; /* Maksymalna szerokość strony */
         margin: 0 auto; /* Wyśrodkowanie strony */
@@ -323,7 +329,8 @@ input[type="submit"]:hover {
     }
 
     header h1 {
-        font-size: 2.5rem; /* Zwiększenie rozmiaru czcionki tytułu */
+        text-align: center; /* Wyśrodkowanie tytułu */
+        margin-bottom: 1rem; /* Margines dolny */
     }
 
     main {
@@ -333,6 +340,46 @@ input[type="submit"]:hover {
     footer {
         position: relative; /* Usunięcie stałej pozycji stopki */
     }
+
+    nav ul {
+        list-style-type: none; /* Usunięcie domyślnych markerów listy */
+        padding: 0;
+        margin-left: 0;
+    }
+    .categories {
+        margin-top: 5.4rem; /* Zmiana top margin dla mniejszych ekranów */
+    }
+
+    .l {
+        margin-top: 15.4rem; /* Zmiana top margin dla mniejszych ekranów */
+    }
+
+    .flormet
+
+{
+           margin-top: 15.4rem; 
+}
+}
+    
+ 
+/* Stylowanie linków w menu nawigacyjnym gornym */
+nav ul li a {
+    text-decoration: none; /* Usunięcie podkreślenia */
+    color: #ffffff; /* Kolor tekstu */
+    font-size: 16px; /* Rozmiar czcionki */
+    font-family: Arial, sans-serif; /* Styl czcionki */
+    padding: 0px; /* Padding wewnętrzny */
+    display: block; /* Wyświetlanie jako blok */
+}
+
+/* srodkowy box */
+.white-background#category-info {
+    overflow: hidden; 
+    padding: 20px;
+    margin-top: 15px;
+}
+
+
 
 }
 
@@ -386,20 +433,25 @@ background-color: rgba(255, 255, 255, 0.8); /* Optional: slight background to ma
 
 }
 
-
+.submenu li a {
+    font-size: 14px; /* Ustawienie wielkości liter w podkategoriach */
+    text-transform: none; /* Brak transformacji tekstu (np. wielkie litery) */
+margin-left: px;
+    color: #ffffff; /* Kolor tekstu w podkategoriach */
+}
 
 
 /* Układ strony */
 .sidebar {
 
 
-margin-left: 3rem;
+margin-left: 2rem;
     width: 380px;
     background-color: #fff;
   
 text-align: center;
  
-margin-top: 12.4rem; 
+margin-top: -0.5%; 
 border-radius: 5px;
 }
 
@@ -410,21 +462,24 @@ border-radius: 5px;
 height: 560px;
 overflow-y: auto;
 max-height: 477px;
+
+
+
+
+}
+/* Styl dla elementów listy tekstow kategorii po najechaniu */
+
+
+/* Styl dla elementów listy kategorii po najechaniu */
+.categories li:hover {
+    
+    background-color: rgba(255, 255, 255, 0.2); /* Kolor tła po najechaniu z przezroczystością */
+
+    color: #fff; /* Kolor tekstu po najechaniu */
+    cursor: pointer; /* Zmiana kursora na wskaźnik */
 }
 
 
-.categories::-webkit-scrollbar {
-  width: 5px; /* Szerokość paska przewijania */
-}
-
-.categories::-webkit-scrollbar-thumb {
-  background-color: #888; /* Kolor kciuka paska przewijania */
-  border-radius: 10px; /* Zaokrąglenie rogów kciuka paska przewijania */
-}
-
-.categories::-webkit-scrollbar-thumb:hover {
-  background-color: #1e72b8; /* Kolor kciuka paska przewijania po najechaniu */
-}
 
 /* animacja produktowa */
 
@@ -494,8 +549,10 @@ max-height: 477px;
 
   
   /* Stylowanie obiektu zawierającego obrazki */
+  
 
     .image-container {
+        align-items: center;
         margin-top: 4rem;
         position: relative;
     overflow: hidden;
@@ -512,7 +569,7 @@ max-height: 477px;
         
         
     }
-  }
+  
 
   .image-container:hover {
     background-color: #f0f0f0;
@@ -525,6 +582,8 @@ max-height: 477px;
     height: 100px; /* Ustawienie szerokości na 100% */
     opacity: 0; /* Początkowo ukryj obrazek */
     animation: slideInFromLeft 0.5s ease forwards; /* Dodaj animację slideInFromLeft */
+    margin-right: 12px;
+    position: relative;
   }
   /* Dodaj opóźnienie dla każdego kolejnego obrazka */
   img:nth-child(1) {
@@ -610,7 +669,7 @@ padding-left: 10px;
 
   margin-bottom: 0px;
   margin-top: 0px;
-text-color: white;
+ color: white;
   opacity: 0; /* Ustawiamy początkową przezroczystość na zero */
   transform: translateY(-10px); /* Przesuwamy elementy w górę o 10 pikseli */
  border-radius: 5px;
@@ -744,7 +803,7 @@ font-size: 17px;
 margin-left: 9px;
 padding: 10px;
 margin-right: 23px;
-margin-top: 11.2rem;
+margin-top:4.2vh;
 height: 65px;
 width: 180px;  
 background-repeat: no-repeat;
@@ -1077,7 +1136,7 @@ display: flex;
 
 /* Styl dla dodatkowego kontentu z białym tłem */
 .white-background {
-    text-color: black;
+   
     background-color: #fff; /* Białe tło */
     flex-grow: 1; /* Elastyczność - zajmie dostępną przestrzeń */
     margin-left: 10px; /* Margines po lewej stronie */
@@ -1123,31 +1182,7 @@ z-index: 1;
   
     }
 
-/* MANIPULACJA MENU LEWYM */
-
-// Pobierz element sidebar
-var sidebar = document.querySelector('.sidebar');
-
-// Zdefiniuj domyślną wysokość i marginesy
-var defaultHeight = sidebar.clientHeight;
-var defaultMarginTop = 40;
-
-// Dodaj nasłuchiwanie na zdarzenie "mouseover"
-sidebar.addEventListener('mouseover', function() {
-    // Po najechaniu myszką, przywróć domyślne wartości wysokości i marginesów
-    sidebar.style.height = defaultHeight + 'px';
-    sidebar.style.marginTop = defaultMarginTop + 'rem';
-});
-
-
-// Dodaj nasłuchiwanie na zdarzenie "mouseover"
-sidebar.addEventListener('mouseover', function() {
-    // Po najechaniu myszką, przywróć domyślne wartości wysokości i marginesów
-    sidebar.style.height = defaultHeight + 'px';
-    sidebar.style.marginTop = defaultMarginTop + 'rem';
-});
 
 
 
-});
-
+;

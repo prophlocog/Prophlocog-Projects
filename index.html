@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -7,6 +9,7 @@
     <title>Responsywna Strona</title>
     <!-- Link do pliku CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="normalize.css">
 </head>
 
     <!-- Nagłówek strony -->
@@ -43,33 +46,52 @@
 
     <div class="container1">
         <aside class="sidebar">
-            <h2>Kategorie</h2>
+           
             <ul class="categories">
+                <h2>Kategorie</h2>
                 <li class="category">
-                    <a href="#" onmouseover="showCategoryInfo('SYSTEM PE-X')" onclick="showCategoryInfo('SYSTEM PE-X')">SYSTEM PE-X</a>
+                    <a href="#" onmouseover="showCategoryInfo(
+                                '', 
+                                'INSTALACJE DLA ESKPERTÓW', 
+                                '', 
+                                [
+                                    { src: 'zdjecia/FLD-023.png', alt: 'LINK1', description: 'ELO1', additionalDescription: 'Opis dla obrazka 1' }
+                                
+                                ])">SYSTEM PE-X</a>
+
+
+
                     <ul class="submenu submenu3">
                         <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
                             <a href="#" onclick="showCategoryInfo(
-                                'Rury wielowarstwowe PEXb/AL/PE', 
-                                'Tekst animacji dla Rur wielowarstwowych', 
+                                '', 
+                                'INSTALACE DLA ESKPERTÓW', 
                                 '', 
                                 [
-                                    { src: 'zdjecia/FLD-023.png', alt: 'LINK1', description: 'ELO1', additionalDescription: 'Opis dla obrazka 1' },
-                                    { src: 'zdjecia/FLP-448.png', alt: 'LINK2', description: 'ELO2', additionalDescription: 'Opis dla obrazka 2' },
-                                    { src: 'zdjecia/konsola.png', alt: 'LINK3', description: 'ELO3', additionalDescription: 'Opis dla obrazka 3' }
+                                    { src: 'zdjecia/rura_wielo.jpg', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
+                                    { src: 'zdjecia/rura2.png', alt: 'LINK2', description: 'RURA FLP ULTRA', additionalDescription: 'Rozmiar' },
+                                    { src: 'zdjecia/wielo — kopia2.jpg', alt: 'LINK3', description: 'RURA FLP W OTULINIE', additionalDescription: 'Rozmiar' }
                                 ])">
+                                
                                 Rury wielowarstwowe<br>PEXb/AL/PE
                             </a>
                         </li>
 
                         <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
-                            <a href="#" onclick="showCategoryInfo('Kształtki PEX System skręcany', 'Kształtki PEX System skręcany', '<p>Dodatkowy tekst dla Kształtki PEX System skręcany</p>',
-                             [{ src: 'zdjecia/elo.png', alt: 'LINK1', description: 'ELO1', link: 'link/do/obrazka1' },
-                              { src: 'zdjecia/elo.png', alt: 'LINK2', description: 'ELO2', link: 'link/do/obrazka2' },
-                              { src: 'sciezka/do/zdjecia3.jpg', alt: 'LINK3', description: 'ELO3', link: 'link/do/obrazka3' }])"
-                                onclick="showCategoryInfo('Rury wielowarstwowe PEXb/AL/PE', 'Tekst animacji dla Rur wielowarstwowych', '<p>Dodatkowy tekst dla SYSTEM PE-X</p>', [{ src: 'sciezka/do/zdjecia1.jpg', alt: 'Opis obrazka 1', description: 'Opis obrazka 1', link: 'link/do/obrazka1' }, { src: 'sciezka/do/zdjecia2.jpg', alt: 'Opis obrazka 2', description: 'Opis obrazka 2', link: 'link/do/obrazka2' }, { src: 'sciezka/do/zdjecia3.jpg', alt: 'Opis obrazka 3', description: 'Opis obrazka 3', link: 'link/do/obrazka3' }])">Rury wielowarstwowe<br>PEXb/AL/PE</a>
-                            
-                        </li>
+                            <a href="#" onclick="showCategoryInfo(
+                                  '', 
+                                  'Kształtki PEX System skręcany',
+                                   '',
+
+                            [{ src: 'zdjecia/elo.png', alt: 'LINK1', description: 'ELO1', link: 'link/do/obrazka1', additionalDescription: 'Rozmiar' },
+                              { src: 'zdjecia/elo.png', alt: 'LINK2', description: 'ELO2', link: 'link/do/obrazka2', additionalDescription: 'Rozmiar' },
+                              { src: 'sciezka/do/zdjecia3.jpg', alt: 'LINK3', description: 'ELO3', link: 'link/do/obrazka3', additionalDescription: 'Rozmiar'  }
+                              ])">
+                              
+                              Kształtki Pex<br> System skręcany</a>
+                            </li>
+
+
                         <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
                             <a href="#" onmouseover="showCategoryInfo('po wjechaniu')" onclick="showCategoryInfo('Kształtki PEX System skręcany')">Kształtki PEX<br>System skręcany</a>
                         </li>
@@ -284,7 +306,7 @@
 
 
 </span>
-</body>
+
     <!-- Stopka strony -->
     <footer>
         <!-- Tekst w stopce -->
@@ -293,6 +315,16 @@
 
     <!-- JavaScript na końcu ciała dokumentu -->
     <script>
+
+            // Funkcja wywoływana po najechaniu kursorem na link "SYSTEM PE-X"
+    function showImage() {
+        // Pobierz element obrazu
+        var hoverImage = document.getElementById('hoverImage');
+        // Ustaw atrybuty obrazu
+        hoverImage.src = 'sciezka/do/zdjecia/system-pex.jpg';
+        // Pokaż okno white-background
+        document.getElementById('whiteBackground').style.display = 'block';
+    }
         // Pobieramy wszystkie kategorie
         const categories = document.querySelectorAll('.category');
 

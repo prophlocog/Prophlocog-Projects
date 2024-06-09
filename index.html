@@ -60,8 +60,8 @@
         [
             { src: 'zdjecia/FLD-023.png', alt: 'LINK1', description: 'ELO1', additionalDescription: 'Opis dla obrazka 1' }
         ])"
-    onclick="toggleImageOutside('SYSTEM PE-X', 'zdjecia/1/1_1/rura2.png', 'Opis obrazka dla SYSTEM PE-X', 'Dodatkowy tekst dla SYSTEM PE-X')"
->SYSTEM PE-X</a>
+<button onclick="toggleImages('SYSTEM PE-X')">SYSTEM PE-X</button>
+
 
                     <ul class="submenu submenu3">
                         <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
@@ -1314,9 +1314,8 @@
 
 
 </span>
-
-
-<div id="zdjeciepozaa"></div>
+  <div class="main-image-container"></div>
+    <div id="category-details"></div>
     <!-- Stopka strony -->
     <footer>
         <!-- Tekst w stopce -->
@@ -1417,9 +1416,15 @@ function toggleDarkMode() {
 // Funkcje obsługi obrazków
 var zIndexCounter = 1;
 
+let animationTimeout;
+
 function expandImageContainer(imageContainerDiv) {
+    // Anuluj poprzednią animację, jeśli istnieje
+    clearTimeout(animationTimeout);
+
+    // Ustawiamy transformację i płynną animację
     imageContainerDiv.style.transform = 'scale(1.1)'; // Powiększenie do 110%
-    imageContainerDiv.style.transition = 'transform 0.3s ease'; // Dodaj płynną animację
+    imageContainerDiv.style.transition = 'transform 0.5s cubic-bezier(0.42, 0, 0.58, 1)'; // Dodaj płynną animację
     imageContainerDiv.style.zIndex = zIndexCounter++; // Ustaw z-index i zwiększ licznik
 
     // Usuń poprzednie nowe opisy, jeśli istnieją
@@ -1428,6 +1433,7 @@ function expandImageContainer(imageContainerDiv) {
         imageContainerDiv.removeChild(previousNewDescriptionDiv);
     }
 
+    // Utwórz nowy opis tekstu
     var newDescriptionDiv = document.createElement("div");
     newDescriptionDiv.textContent = "Kliknij aby powiększyć"; // Nowy opis tekstu
     newDescriptionDiv.classList.add("new-description"); // Dodaj klasę dla nowego opisu
@@ -1435,15 +1441,25 @@ function expandImageContainer(imageContainerDiv) {
 }
 
 function resetImageContainer(imageContainerDiv) {
-    imageContainerDiv.style.transform = ''; // Usuń transformację po opuszczeniu
-    imageContainerDiv.style.zIndex = '0'; // Usuń z-index
+    // Usuń transformację po opuszczeniu i zresetuj z-index
+    setTimeout(function() {
+        imageContainerDiv.style.transform = ''; // Usuń transformację po opuszczeniu
+        imageContainerDiv.style.zIndex = '0'; // Zresetuj z-index
+    }, 500); // Dodajemy opóźnienie 500ms
 
+    // Usuń nowy opis, jeśli istnieje
     var newDescriptionDiv = imageContainerDiv.querySelector('.new-description');
     if (newDescriptionDiv) {
         imageContainerDiv.removeChild(newDescriptionDiv); // Usuń nowy opis, jeśli istnieje
     }
 }
 
+function removeImageContainer() {
+    const imageContainer = document.querySelector('.zdjeciepoza');
+    if (imageContainer) {
+        imageContainer.remove();
+    }
+}
 function initializeImageContainers() {
     var imageContainers = document.querySelectorAll('.image-container');
 
@@ -1534,37 +1550,40 @@ function showCategoryInfo(category, animationText, additionalTextHTML, imageInfo
 
 
 // Funkcja do obsługi kliknięcia na kategorię
+let isAnimating = false; // Flaga do śledzenia animacji
+let activeCategory = null; // Przechowuje referencję do aktywnej kategorii
+
 function handleCategoryClick(category) {
-    const container = document.getElementById('category-image-container');
-    const activeImage = container.querySelector('.category-image');
-    
-    if (activeImage) {
-        // Sprawdzamy, czy kategoria została kliknięta ponownie
-        if (category.classList.contains('active-category')) {
+    if (!isAnimating) {
+        isAnimating = true; // Ustawiamy flagę animacji na true
+
+        const container = document.getElementById('category-image-container');
+        const activeImage = container.querySelector('.category-image');
+
+        if (activeCategory === category) {
+            // Usuwamy obrazek i resetujemy aktywną kategorię
             removeCategoryImage(container);
-            category.classList.remove('active-category');
+            activeCategory.classList.remove('active-category');
+            activeCategory = null;
+            isAnimating = false; // Resetujemy flagę animacji
         } else {
-            // Usuwamy aktywny obrazek i ustawiamy nowy
-            removeCategoryImage(container);
+            // Sprawdzamy, czy istnieje aktywny obrazek
+            if (activeImage) {
+                // Usuwamy obrazek z poprzedniej kategorii
+                removeCategoryImage(container);
+                activeCategory.classList.remove('active-category');
+            }
+
+            // Dodajemy obrazek do nowej kategorii
             addCategoryImageOutside(container);
-            
-            // Usuwamy klasę 'active-category' z innych kategorii
-            const otherCategories = document.querySelectorAll('.category');
-            otherCategories.forEach(otherCategory => {
-                if (otherCategory !== category) {
-                    otherCategory.classList.remove('active-category');
-                }
-            });
-            
-            // Dodajemy klasę 'active-category' do klikniętej kategorii
             category.classList.add('active-category');
+            activeCategory = category;
+
+            // Resetujemy flagę animacji po zakończeniu działania
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500); // Czas trwania animacji w milisekundach
         }
-    } else {
-        // Dodajemy obrazek po kliknięciu na kategorię
-        addCategoryImageOutside(container);
-        
-        // Dodajemy klasę 'active-category' do klikniętej kategorii
-        category.classList.add('active-category');
     }
 }
 
@@ -1582,7 +1601,7 @@ function addCategoryImage(activeCategory) {
     // Sprawdź, czy aktywna kategoria istnieje i czy obrazek nie został już dodany
     if (activeCategory && !activeCategory.querySelector('.category-image')) {
         const img = document.createElement('img');
-        img.src = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxNjAgMzAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM6c2VyaWY9Imh0dHA6Ly93d3cuc2VyaWYuY29tLyIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoyOyI+PHJlY3QgeD0iMS44MzYiIHk9IjguMTA0IiB3aWR0aD0iNy4wODEiIGhlaWdodD0iMjAuMzQxIiBzdHlsZT0iZmlsbDojMjg5Y2Q4OyIvPjxyZWN0IHg9IjguOTE2IiB5PSIxLjUzOSIgd2lkdGg9IjEzLjQzMiIgaGVpZ2h0PSI2LjU2NiIgc3R5bGU9ImZpbGw6IzJiNzViOTsiLz48cmVjdCB4PSI4LjE1MiIgeT0iMTQuOTc3IiB3aWR0aD0iNy40ODEiIGhlaWdodD0iNi41NjYiIHN0eWxlPSJmaWxsOiMyODljZDg7Ii8+PHBhdGggZD0iTTE1LjU1MSwyMS41NTdsNi43OTcsLTYuNThsLTEzLjU5MywtMGw2Ljc5Niw2LjU4WiIgc3R5bGU9ImZpbGw6IzI4OWNkODsiLz48cGF0aCBkPSJNOC45MTQsMS41MzlsNy4wNzgsNi41NjVsLTE0LjE1NiwwbDcuMDc4LC02LjU2NVoiIHN0eWxlPSJmaWxsOiMyYjc1Yjk7Ii8+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMS42OTkxOCwwLDAsMS42OTUxNywtMjUuODIwNSwtMjkuMjQxMSkiPjx0ZXh0IHg9IjI4LjMzM3B4IiB5PSIyNC44NzFweCIgc3R5bGU9ImZvbnQtZmFtaWx5OidBcmlhbE1UJywgJ0FyaWFsJywgc2Fucy1zZXJpZjtmb250LXNpemU6OS4yN3B4O2ZpbGw6IzJiNzViOTsiPklOU1Q8dHNwYW4geD0iNDguNzZweCA1NC45NDJweCAiIHk9IjI0Ljg3MXB4IDI0Ljg3MXB4ICI+QUw8L3RzcGFuPkFDSkU8L3RleHQ+PGcgdHJhbnNmb3JtPSJtYXRyaXgoOS4yNjk3NSwwLDAsOS4yNjk3NSwxMDEuNzM1LDM0LjE0MTIpIj48L2c+PHRleHQgeD0iMjguMzMzcHgiIHk9IjM0LjE0MXB4IiBzdHlsZT0iZm9udC1mYW1pbHk6J0xhdG8tVGhpbicsICdMYXRvJywgc2Fucy1zZXJpZjtmb250LXdlaWdodDoyNzU7Zm9udC1zaXplOjkuMjdweDtmaWxsOiMyODljZDg7Ij5ETEE8dHNwYW4geD0iNDUuNzA0cHggIiB5PSIzNC4xNDFweCAiPiA8L3RzcGFuPkVLU1BFUjx0c3BhbiB4PSI4MC4yMzlweCA4NS4xMTlweCAiIHk9IjM0LjE0MXB4IDM0LjE0MXB4ICI+VMOTPC90c3Bhbj5XPC90ZXh0PjwvZz48L3N2Zz4='; // Twój kod base64
+        img.src = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj0ZXh0PjwvZz48L3N2Zz4='; // Twój kod base64
         img.alt = 'Opis obrazka';
         img.classList.add('category-specific-image'); // Nowa unikalna klasa
 
@@ -1637,6 +1656,8 @@ function toggleImageOutside(category, imagePath, altText, additionalText) {
     }
 }
 
+
+
 // Wywołanie funkcji toggleImageOutside z odpowiednimi ścieżkami obrazków dla różnych kategorii
 toggleImageOutside('SYSTEM PE-X', 'zdjecia/1/1_1/rura2.png', 'Opis obrazka dla SYSTEM PE-X', 'Dodatkowy tekst dla SYSTEM PE-X');
 toggleImageOutside('Inna Kategoria', 'zdjecia/inna-kategoria.png', 'Opis obrazka dla Inna Kategoria', 'Dodatkowy tekst dla Inna Kategoria');
@@ -1645,6 +1666,90 @@ toggleImageOutside('Inna Kategoria', 'zdjecia/inna-kategoria.png', 'Opis obrazka
 toggleImageOutside('SYSTEM PE-X', 'zdjecia/1/1_1/rura2.png', 'Opis obrazka dla SYSTEM PE-X');
 toggleImageOutside('Inna Kategoria', 'zdjecia/inna-kategoria.png', 'Opis obrazka dla Inna Kategoria');
 
+
+        function toggleImages(category) {
+            console.log("Kategoria kliknięta:", category);
+
+            // Znajdź lub utwórz główny kontener dla wszystkich zdjęć
+            let mainImageContainer = document.querySelector('.main-image-container');
+            if (!mainImageContainer) {
+                mainImageContainer = document.createElement('div');
+                mainImageContainer.classList.add('main-image-container');
+                document.body.appendChild(mainImageContainer);
+            }
+
+            // Usuń istniejące obrazki z głównego kontenera
+            mainImageContainer.innerHTML = '';
+
+
+
+
+
+            // Pobierz dane obrazków dla danej kategorii
+            const images = imagesData[category];
+            if (images) {
+                // Ustaw licznik obecnego obrazka na 0
+                let currentIndex = 0;
+
+                // Funkcja do wyświetlania następnego obrazka
+                const showNextImage = () => {
+                    // Usuń poprzedni obrazek
+                    mainImageContainer.innerHTML = '';
+
+                    // Pobierz kolejny obrazek z tablicy
+                    const image = images[currentIndex];
+
+                    // Utwórz element <img> dla obrazka
+                    const img = document.createElement('img');
+                    img.src = image.imagePath;
+                    img.alt = image.altText;
+
+                    // Utwórz element <div> dla opisu obrazka
+                    const descriptionDiv = document.createElement('div');
+                    descriptionDiv.textContent = image.additionalText;
+
+                    // Dodaj obrazek i opis do głównego kontenera
+                    mainImageContainer.appendChild(img);
+                    mainImageContainer.appendChild(descriptionDiv);
+
+                    // Inkrementuj licznik lub wróć do 0, jeśli osiągnięto koniec tablicy obrazków
+                    currentIndex = (currentIndex + 1) % images.length;
+                };
+
+                // Wywołaj funkcję showNextImage co 5 sekund
+                const intervalId = setInterval(showNextImage, 5000);
+
+                // Wywołaj funkcję showNextImage, aby wyświetlić pierwszy obrazek od razu
+                showNextImage();
+            } else {
+                console.error('Brak obrazków dla kategorii:', category);
+            }
+        }
+
+
+
+
+
+
+        // Tutaj dodaj dane obrazków dla kategorii
+        const imagesData = {
+            'SYSTEM PE-X': [
+                { imagePath: 'zdjecia/1/1_1/rura1.png', altText: 'NO NIE WIEM 1', additionalText: 'Dodatkowy tekst 1 dla SYSTEM PE-X' },
+                { imagePath: 'zdjecia/1/1_1/rura2.png', altText: 'SIE OKAZE 2', additionalText: 'Dodatkowy tekst 2 dla SYSTEM PE-X' },
+                { imagePath: 'zdjecia/1/1_1/rura3.png', altText: 'Opis obrazka 3 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 3 dla SYSTEM PE-X' },
+                { imagePath: 'zdjecia/1/1_1/rura4.png', altText: 'Opis obrazka 4 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 4 dla SYSTEM PE-X' },
+                { imagePath: 'zdjecia/1/1_1/rura5.png', altText: 'Opis obrazka 5 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 5 dla SYSTEM PE-X' },
+                { imagePath: 'zdjecia/1/1_1/rura6.png', altText: 'Opis obrazka 6 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 6 dla SYSTEM PE-X' }
+            ],
+            'Inna Kategoria': [
+                { imagePath: 'zdjecia/inna-kategoria1.png', altText: 'Opis obrazka 1 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 1 dla Inna Kategoria' },
+                { imagePath: 'zdjecia/inna-kategoria2.png', altText: 'Opis obrazka 2 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 2 dla Inna Kategoria' },
+                { imagePath: 'zdjecia/inna-kategoria3.png', altText: 'Opis obrazka 3 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 3 dla Inna Kategoria' },
+                { imagePath: 'zdjecia/inna-kategoria4.png', altText: 'Opis obrazka 4 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 4 dla Inna Kategoria' },
+                { imagePath: 'zdjecia/inna-kategoria5.png', altText: 'Opis obrazka 5 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 5 dla Inna Kategoria' },
+                { imagePath: 'zdjecia/inna-kategoria6.png', altText: 'Opis obrazka 6 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 6 dla Inna Kategoria' }
+            ]
+        };
 </script>
 </body>
 </html>

@@ -52,16 +52,16 @@
             <ul class="categories">
                 <h2>Kategorie</h2>
                 <li class="category">
-                    <a href="#" onmouseover="showCategoryInfo(
-                                '', 
-                                'INSTALACJE DLA ESKPERTÓW', 
-                                '', 
-                                [
-                                    { src: 'zdjecia/FLD-023.png', alt: 'LINK1', description: 'ELO1', additionalDescription: 'Opis dla obrazka 1' }
-                                
-                                ])">SYSTEM PE-X</a>
-
-
+<a href="#" 
+    onmouseover="showCategoryInfo(
+        '', 
+        'INSTALACJE DLA ESKPERTÓW', 
+        '', 
+        [
+            { src: 'zdjecia/FLD-023.png', alt: 'LINK1', description: 'ELO1', additionalDescription: 'Opis dla obrazka 1' }
+        ])"
+    onclick="toggleImageOutside('SYSTEM PE-X', 'zdjecia/1/1_1/rura2.png', 'Opis obrazka dla SYSTEM PE-X', 'Dodatkowy tekst dla SYSTEM PE-X')"
+>SYSTEM PE-X</a>
 
                     <ul class="submenu submenu3">
                         <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
@@ -167,12 +167,12 @@
                                   'Narzędzia instalacyjne',
                                    '',
 
-                            [       { src: 'zdjecia/1/1_2/rura_wielo.png', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
-                                    { src: 'zdjecia/1/1_2/rura_wielo.png', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
-                                    { src: 'zdjecia/1/1_2/rura_wielo.png', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
- 				    { src: 'zdjecia/1/1_2/rura_wielo.png', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
-                                    { src: 'zdjecia/1/1_2/rura_wielo.png', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
-                            
+                            [       { src: 'zdjecia/1/1_5/FLP-420.jpg', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
+                                    { src: 'zdjecia/1/1_5/FLP-432.jpg', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
+                                    { src: 'zdjecia/1/1_5/FLP-440.jpg', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
+ 			                	    { src: 'zdjecia/1/1_5/FLP-448.png', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
+                                    { src: 'zdjecia/1/1_5/FLP-449.png', alt: 'LINK1', description: 'RURA FLP LASER', additionalDescription: 'Rozmiar' },
+                               
             
 
 
@@ -1266,6 +1266,7 @@
     </aside>
 
 
+
 <div class="white-background" id="category-info">
 <span>
 <div class="instalacje">
@@ -1314,6 +1315,8 @@
 
 </span>
 
+
+<div id="zdjeciepozaa"></div>
     <!-- Stopka strony -->
     <footer>
         <!-- Tekst w stopce -->
@@ -1325,7 +1328,7 @@
 
     <script>
 
-       // Funkcja wywoływana po najechaniu kursorem na link "SYSTEM PE-X"
+// Funkcja wywoływana po najechaniu kursorem na link "SYSTEM PE-X"
 // Flaga do kontrolowania animacji
 let isMenuAnimating = false;
 
@@ -1348,11 +1351,42 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         // Ustawiamy zdarzenie na zjechanie kursorem z kategorii
         category.addEventListener('mouseleave', () => {
-            if (!isMenuAnimating) {
+            if (!isMenuAnimating && !category.classList.contains('clicked')) {
                 setTimeout(() => {
                     category.classList.remove('active'); // Usuwamy klasę aktywnej kategorii po krótkim opóźnieniu
                 }, 700); // Opóźnienie w milisekundach (tutaj 700ms)
             }
+        });
+
+        // Dodajemy zdarzenie kliknięcia na kategorię
+        category.addEventListener('click', (event) => {
+            event.stopPropagation(); // Zatrzymaj propagację, aby kliknięcia w podkategorie nie zamykały kategorii
+            
+            if (category.classList.contains('clicked')) {
+                category.classList.remove('clicked');
+                category.classList.remove('active'); // Usuwamy klasę aktywnej kategorii
+                removeCategoryImage(category); // Usuń obrazek z kategorii
+            } else {
+                // Zamknij wszystkie inne kategorie i usuń ich obrazki
+                categories.forEach(otherCategory => {
+                    if (otherCategory !== category) {
+                        otherCategory.classList.remove('clicked');
+                        otherCategory.classList.remove('active');
+                        removeCategoryImage(otherCategory); // Usuń obrazek z innych kategorii
+                    }
+                });
+                category.classList.add('clicked');
+                category.classList.add('active'); // Dodajemy klasę aktywnej kategorii
+                addCategoryImage(category); // Dodaj obrazek do klikniętej kategorii
+            }
+        });
+    });
+
+    // Obsługa kliknięcia w podkategorię
+    const subcategories = document.querySelectorAll('.submenu li');
+    subcategories.forEach(subcategory => {
+        subcategory.addEventListener('click', (event) => {
+            event.stopPropagation(); // Zatrzymaj propagację kliknięcia, aby główna kategoria nie reagowała
         });
     });
 
@@ -1429,7 +1463,6 @@ function initializeImageContainers() {
     });
 }
 
-// Funkcja do wyświetlania informacji o kategorii i obrazków
 function showCategoryInfo(category, animationText, additionalTextHTML, imageInfoArray) {
     console.log("Showing info for category: ", category);
     var categoryInfoDiv = document.getElementById("category-info");
@@ -1484,6 +1517,13 @@ function showCategoryInfo(category, animationText, additionalTextHTML, imageInfo
             imageContainerDiv.appendChild(additionalDescriptionDiv);
         }
 
+        // Dodaj link do całego kontenera obrazka
+        if (imageInfo.url) {
+            imageContainerDiv.addEventListener('click', () => {
+                window.location.href = imageInfo.url;
+            });
+        }
+
         categoryInfoDiv.appendChild(imageContainerDiv);
     });
 
@@ -1491,6 +1531,119 @@ function showCategoryInfo(category, animationText, additionalTextHTML, imageInfo
     initializeImageContainers();
 }
 
+
+
+// Funkcja do obsługi kliknięcia na kategorię
+function handleCategoryClick(category) {
+    const container = document.getElementById('category-image-container');
+    const activeImage = container.querySelector('.category-image');
+    
+    if (activeImage) {
+        // Sprawdzamy, czy kategoria została kliknięta ponownie
+        if (category.classList.contains('active-category')) {
+            removeCategoryImage(container);
+            category.classList.remove('active-category');
+        } else {
+            // Usuwamy aktywny obrazek i ustawiamy nowy
+            removeCategoryImage(container);
+            addCategoryImageOutside(container);
+            
+            // Usuwamy klasę 'active-category' z innych kategorii
+            const otherCategories = document.querySelectorAll('.category');
+            otherCategories.forEach(otherCategory => {
+                if (otherCategory !== category) {
+                    otherCategory.classList.remove('active-category');
+                }
+            });
+            
+            // Dodajemy klasę 'active-category' do klikniętej kategorii
+            category.classList.add('active-category');
+        }
+    } else {
+        // Dodajemy obrazek po kliknięciu na kategorię
+        addCategoryImageOutside(container);
+        
+        // Dodajemy klasę 'active-category' do klikniętej kategorii
+        category.classList.add('active-category');
+    }
+}
+
+// Inicjujemy zdarzenia dla kategorii
+const categories = document.querySelectorAll('.category');
+categories.forEach(category => {
+    category.addEventListener('click', () => {
+        handleCategoryClick(category);
+    });
+});
+
+
+// Funkcja do dodawania obrazka do kategorii
+function addCategoryImage(activeCategory) {
+    // Sprawdź, czy aktywna kategoria istnieje i czy obrazek nie został już dodany
+    if (activeCategory && !activeCategory.querySelector('.category-image')) {
+        const img = document.createElement('img');
+        img.src = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxNjAgMzAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM6c2VyaWY9Imh0dHA6Ly93d3cuc2VyaWYuY29tLyIgc3R5bGU9ImZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoyOyI+PHJlY3QgeD0iMS44MzYiIHk9IjguMTA0IiB3aWR0aD0iNy4wODEiIGhlaWdodD0iMjAuMzQxIiBzdHlsZT0iZmlsbDojMjg5Y2Q4OyIvPjxyZWN0IHg9IjguOTE2IiB5PSIxLjUzOSIgd2lkdGg9IjEzLjQzMiIgaGVpZ2h0PSI2LjU2NiIgc3R5bGU9ImZpbGw6IzJiNzViOTsiLz48cmVjdCB4PSI4LjE1MiIgeT0iMTQuOTc3IiB3aWR0aD0iNy40ODEiIGhlaWdodD0iNi41NjYiIHN0eWxlPSJmaWxsOiMyODljZDg7Ii8+PHBhdGggZD0iTTE1LjU1MSwyMS41NTdsNi43OTcsLTYuNThsLTEzLjU5MywtMGw2Ljc5Niw2LjU4WiIgc3R5bGU9ImZpbGw6IzI4OWNkODsiLz48cGF0aCBkPSJNOC45MTQsMS41MzlsNy4wNzgsNi41NjVsLTE0LjE1NiwwbDcuMDc4LC02LjU2NVoiIHN0eWxlPSJmaWxsOiMyYjc1Yjk7Ii8+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMS42OTkxOCwwLDAsMS42OTUxNywtMjUuODIwNSwtMjkuMjQxMSkiPjx0ZXh0IHg9IjI4LjMzM3B4IiB5PSIyNC44NzFweCIgc3R5bGU9ImZvbnQtZmFtaWx5OidBcmlhbE1UJywgJ0FyaWFsJywgc2Fucy1zZXJpZjtmb250LXNpemU6OS4yN3B4O2ZpbGw6IzJiNzViOTsiPklOU1Q8dHNwYW4geD0iNDguNzZweCA1NC45NDJweCAiIHk9IjI0Ljg3MXB4IDI0Ljg3MXB4ICI+QUw8L3RzcGFuPkFDSkU8L3RleHQ+PGcgdHJhbnNmb3JtPSJtYXRyaXgoOS4yNjk3NSwwLDAsOS4yNjk3NSwxMDEuNzM1LDM0LjE0MTIpIj48L2c+PHRleHQgeD0iMjguMzMzcHgiIHk9IjM0LjE0MXB4IiBzdHlsZT0iZm9udC1mYW1pbHk6J0xhdG8tVGhpbicsICdMYXRvJywgc2Fucy1zZXJpZjtmb250LXdlaWdodDoyNzU7Zm9udC1zaXplOjkuMjdweDtmaWxsOiMyODljZDg7Ij5ETEE8dHNwYW4geD0iNDUuNzA0cHggIiB5PSIzNC4xNDFweCAiPiA8L3RzcGFuPkVLU1BFUjx0c3BhbiB4PSI4MC4yMzlweCA4NS4xMTlweCAiIHk9IjM0LjE0MXB4IDM0LjE0MXB4ICI+VMOTPC90c3Bhbj5XPC90ZXh0PjwvZz48L3N2Zz4='; // Twój kod base64
+        img.alt = 'Opis obrazka';
+        img.classList.add('category-specific-image'); // Nowa unikalna klasa
+
+        // Dodaj obrazek wewnątrz aktywnej kategorii
+        activeCategory.appendChild(img);
+    }
+}
+
+
+
+
+
+
+
+// Funkcja do usuwania obrazka z kategorii
+function removeCategoryImage(category) {
+    const img = category.querySelector('.category-image, .category-specific-image');
+    if (img) {
+        category.removeChild(img);
+    }
+}
+
+// Funkcja do przełączania obrazka na zewnątrz
+function toggleImageOutside(category, imagePath, altText, additionalText) {
+    console.log("Kategoria kliknięta:", category); // Dodaj tę linię
+
+    const existingImageDiv = document.querySelector('.zdjeciepoza');
+    
+    if (existingImageDiv) {
+        // Usuń istniejący div z obrazkiem
+        existingImageDiv.remove();
+    } else {
+        // Utwórz nowy div z obrazkiem
+        const imageDiv = document.createElement('div');
+        imageDiv.classList.add('zdjeciepoza');
+
+        const img = document.createElement('img');
+        img.src = imagePath;
+        img.alt = altText;
+
+        imageDiv.appendChild(img); // Dodaj obrazek do diva
+
+        // Dodaj tekst dodatkowy obok obrazka, jeśli istnieje
+        if (additionalText) {
+            const additionalTextDiv = document.createElement('div');
+            additionalTextDiv.textContent = additionalText;
+            imageDiv.appendChild(additionalTextDiv);
+        }
+
+        // Dodaj div do body
+        document.body.appendChild(imageDiv);
+    }
+}
+
+// Wywołanie funkcji toggleImageOutside z odpowiednimi ścieżkami obrazków dla różnych kategorii
+toggleImageOutside('SYSTEM PE-X', 'zdjecia/1/1_1/rura2.png', 'Opis obrazka dla SYSTEM PE-X', 'Dodatkowy tekst dla SYSTEM PE-X');
+toggleImageOutside('Inna Kategoria', 'zdjecia/inna-kategoria.png', 'Opis obrazka dla Inna Kategoria', 'Dodatkowy tekst dla Inna Kategoria');
+
+// Wywołanie funkcji toggleImageOutside z odpowiednimi ścieżkami obrazków dla różnych kategorii
+toggleImageOutside('SYSTEM PE-X', 'zdjecia/1/1_1/rura2.png', 'Opis obrazka dla SYSTEM PE-X');
+toggleImageOutside('Inna Kategoria', 'zdjecia/inna-kategoria.png', 'Opis obrazka dla Inna Kategoria');
 
 </script>
 </body>

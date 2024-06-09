@@ -101,7 +101,7 @@ nav ul li a {
 
 /* srodkowy box */
 .white-background#category-info {
-    overflow: hidden; 
+    overflow: auto; 
     padding: 20px;
     margin-top: 160px;
     height: 600px;
@@ -374,7 +374,7 @@ nav ul li a {
 
 /* srodkowy box */
 .white-background#category-info {
-    overflow: hidden; 
+    overflow: auto; 
     padding: 20px;
     margin-top: 15px;
 }
@@ -461,7 +461,7 @@ border-radius: 5px;
     list-style: none;
 height: 560px;
 overflow-y: auto;
-max-height: 477px;
+max-height:500px;
 
 
 
@@ -612,6 +612,7 @@ border-radius: 10px;
 padding-right: 10px;
 padding-left: 10px;
 margin-left: 5px;
+position: relative;
 }
 
 /* Styl dla podmenu */
@@ -738,11 +739,6 @@ font-size: 17px;
 
 
 /* Dodajemy animację z czasem trwania 0.6 sekundy */
-
-.category.active .submenu {
-    display: block;
-    animation: slideDown 1.2s ease forwards; /* Dodajemy animację slideDown */
-}
 
 
 
@@ -1157,9 +1153,6 @@ z-index: 1;
   transform: translateX(0); /* Resetujemy przesunięcie w prawo */
 }
 
-.submenu.show li {
-  animation: revealDown 2s ease forwards;
-}
 
 
 @keyframes revealDown {
@@ -1185,4 +1178,85 @@ z-index: 1;
 
 
 
-;
+.new-description {
+    opacity: 1; /* Ukryj tekst początkowo */
+    transition: opacity 0.5s ease; /* Dodaj przejście przezroczystości */
+    bottom: 0px; /* Można dostosować położenie */
+ /* Można dostosować położenie */
+
+    color: lightblue; /* Kolor tekstu */
+/* Odstęp wewnętrzny */
+
+}
+
+.category.clicked .submenu {
+  max-height: 700px; /* Zapewnia rozwinięcie menu */
+}
+
+
+/* Stylowanie kontenera obrazka */
+.category .category-image-container {
+    width: 100%; /* Ustaw szerokość na 100% kategorii */
+    height: 0; /* Rozpocznij z wysokością 0 */
+    overflow: hidden; /* Ukryj zawartość, która wykracza poza kontener */
+    transition: height 0.5s ease; /* Dodaj płynną animację zmiany wysokości */
+
+}
+
+
+
+.category-specific-image
+{
+margin-top: -10px;
+    width: auto; /* Szerokość obrazka */
+    height: 62px; /* Wysokość obrazka dostosowana proporcjonalnie */
+    border: 2px solid #ccc; /* Grubość i styl obramowania */
+    border-radius: 5px; /* Zaokrąglenie rogów */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Cień */
+    cursor: pointer; /* Kursor wskazujący, aby wskazać, że obrazek jest klikalny */
+    transition: transform 2s ease; /* Płynna animacja transformacji */
+	z-index: 1;
+	background-color: white;
+}
+
+
+.category.active-category {
+    background-color: white; /* Kolor tła dla aktywnej kategorii */
+}
+
+
+/* Stylowanie obrazka */
+.category-image {
+
+
+    position: fixed; /* Ustawienie obrazka na stałe w określonym miejscu na ekranie */
+    bottom: 20px; /* Odległość od dołu ekranu */
+    right: 20px;
+    width: auto; /* Szerokość obrazka */
+    height: 65px; /* Wysokość obrazka dostosowana proporcjonalnie */
+    border: 2px solid #ccc; /* Grubość i styl obramowania */
+    border-radius: 5px; /* Zaokrąglenie rogów */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Cień */
+    cursor: pointer; /* Kursor wskazujący, aby wskazać, że obrazek jest klikalny */
+    transition: transform 1s ease; /* Płynna animacja transformacji */
+    z-index: 1;
+    background-color: white;
+}
+
+
+.category.active-category {
+    background-color: white; /* Kolor tła dla aktywnej kategorii */
+}
+
+/* Styl dla kategorii oznaczonej jako aktywna i zawierającej obrazek */
+.category.active-category .category-image {
+   padding: 5px; /* Odstęp między obrazkiem a tekstem kategorii */
+}
+
+.zdjeciepoza {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Ustaw z-index, aby div ze zdjęciem był na wierzchu */
+}

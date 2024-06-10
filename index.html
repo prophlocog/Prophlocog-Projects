@@ -60,6 +60,8 @@
         [
             { src: 'zdjecia/FLD-023.png', alt: 'LINK1', description: 'ELO1', additionalDescription: 'Opis dla obrazka 1' }
         ])"
+
+
 <button onclick="toggleImages('SYSTEM PE-X')">SYSTEM PE-X</button>
 
 
@@ -1657,7 +1659,6 @@ function toggleImageOutside(category, imagePath, altText, additionalText) {
 }
 
 
-
 // Wywołanie funkcji toggleImageOutside z odpowiednimi ścieżkami obrazków dla różnych kategorii
 toggleImageOutside('SYSTEM PE-X', 'zdjecia/1/1_1/rura2.png', 'Opis obrazka dla SYSTEM PE-X', 'Dodatkowy tekst dla SYSTEM PE-X');
 toggleImageOutside('Inna Kategoria', 'zdjecia/inna-kategoria.png', 'Opis obrazka dla Inna Kategoria', 'Dodatkowy tekst dla Inna Kategoria');
@@ -1667,89 +1668,102 @@ toggleImageOutside('SYSTEM PE-X', 'zdjecia/1/1_1/rura2.png', 'Opis obrazka dla S
 toggleImageOutside('Inna Kategoria', 'zdjecia/inna-kategoria.png', 'Opis obrazka dla Inna Kategoria');
 
 
-        function toggleImages(category) {
-            console.log("Kategoria kliknięta:", category);
+// Zmienna globalna do śledzenia aktualnie wyświetlanej kategorii
+let currentCategory = null;
 
-            // Znajdź lub utwórz główny kontener dla wszystkich zdjęć
-            let mainImageContainer = document.querySelector('.main-image-container');
-            if (!mainImageContainer) {
-                mainImageContainer = document.createElement('div');
-                mainImageContainer.classList.add('main-image-container');
-                document.body.appendChild(mainImageContainer);
-            }
+function toggleImages(category) {
+    console.log("Kategoria kliknięta:", category);
 
-            // Usuń istniejące obrazki z głównego kontenera
+    // Znajdź lub utwórz główny kontener dla wszystkich zdjęć
+    let mainImageContainer = document.querySelector('.main-image-container');
+
+    // Jeśli kliknięta kategoria jest już wyświetlana, usuń kontener i zresetuj currentCategory
+    if (currentCategory === category) {
+        if (mainImageContainer) {
+            mainImageContainer.remove();
+        }
+        currentCategory = null;
+        return;
+    }
+
+    // Ustaw nową kategorię jako aktualnie wyświetlaną
+    currentCategory = category;
+
+    if (!mainImageContainer) {
+        mainImageContainer = document.createElement('div');
+        mainImageContainer.classList.add('main-image-container');
+        document.body.appendChild(mainImageContainer);
+    } else {
+        // Usuń istniejące obrazki z głównego kontenera
+        mainImageContainer.innerHTML = '';
+    }
+
+    // Pobierz dane obrazków dla danej kategorii
+    const images = imagesData[category];
+    if (images) {
+        // Ustaw licznik obecnego obrazka na 0
+        let currentIndex = 0;
+
+        // Funkcja do wyświetlania następnego obrazka
+        const showNextImage = () => {
+            // Usuń poprzedni obrazek i opis
             mainImageContainer.innerHTML = '';
 
+            // Pobierz kolejny obrazek z tablicy
+            const image = images[currentIndex];
 
+            // Utwórz element <img> dla obrazka
+            const img = document.createElement('img');
+            img.src = image.imagePath;
+            img.alt = image.altText;
 
+            // Utwórz element <div> dla opisu obrazka
+            const descriptionDiv = document.createElement('div');
+            descriptionDiv.textContent = image.additionalText;
+            descriptionDiv.classList.add('description');
 
+            // Dodaj obrazek i opis do głównego kontenera
+            mainImageContainer.appendChild(img);
+            mainImageContainer.appendChild(descriptionDiv);
 
-            // Pobierz dane obrazków dla danej kategorii
-            const images = imagesData[category];
-            if (images) {
-                // Ustaw licznik obecnego obrazka na 0
-                let currentIndex = 0;
+            // Dodaj klasę 'visible' do opisu po krótkim opóźnieniu, aby uruchomić animację
+            setTimeout(() => {
+                descriptionDiv.classList.add('visible');
+            }, 10);
 
-                // Funkcja do wyświetlania następnego obrazka
-                const showNextImage = () => {
-                    // Usuń poprzedni obrazek
-                    mainImageContainer.innerHTML = '';
-
-                    // Pobierz kolejny obrazek z tablicy
-                    const image = images[currentIndex];
-
-                    // Utwórz element <img> dla obrazka
-                    const img = document.createElement('img');
-                    img.src = image.imagePath;
-                    img.alt = image.altText;
-
-                    // Utwórz element <div> dla opisu obrazka
-                    const descriptionDiv = document.createElement('div');
-                    descriptionDiv.textContent = image.additionalText;
-
-                    // Dodaj obrazek i opis do głównego kontenera
-                    mainImageContainer.appendChild(img);
-                    mainImageContainer.appendChild(descriptionDiv);
-
-                    // Inkrementuj licznik lub wróć do 0, jeśli osiągnięto koniec tablicy obrazków
-                    currentIndex = (currentIndex + 1) % images.length;
-                };
-
-                // Wywołaj funkcję showNextImage co 5 sekund
-                const intervalId = setInterval(showNextImage, 5000);
-
-                // Wywołaj funkcję showNextImage, aby wyświetlić pierwszy obrazek od razu
-                showNextImage();
-            } else {
-                console.error('Brak obrazków dla kategorii:', category);
-            }
-        }
-
-
-
-
-
-
-        // Tutaj dodaj dane obrazków dla kategorii
-        const imagesData = {
-            'SYSTEM PE-X': [
-                { imagePath: 'zdjecia/1/1_1/rura1.png', altText: 'NO NIE WIEM 1', additionalText: 'Dodatkowy tekst 1 dla SYSTEM PE-X' },
-                { imagePath: 'zdjecia/1/1_1/rura2.png', altText: 'SIE OKAZE 2', additionalText: 'Dodatkowy tekst 2 dla SYSTEM PE-X' },
-                { imagePath: 'zdjecia/1/1_1/rura3.png', altText: 'Opis obrazka 3 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 3 dla SYSTEM PE-X' },
-                { imagePath: 'zdjecia/1/1_1/rura4.png', altText: 'Opis obrazka 4 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 4 dla SYSTEM PE-X' },
-                { imagePath: 'zdjecia/1/1_1/rura5.png', altText: 'Opis obrazka 5 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 5 dla SYSTEM PE-X' },
-                { imagePath: 'zdjecia/1/1_1/rura6.png', altText: 'Opis obrazka 6 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 6 dla SYSTEM PE-X' }
-            ],
-            'Inna Kategoria': [
-                { imagePath: 'zdjecia/inna-kategoria1.png', altText: 'Opis obrazka 1 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 1 dla Inna Kategoria' },
-                { imagePath: 'zdjecia/inna-kategoria2.png', altText: 'Opis obrazka 2 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 2 dla Inna Kategoria' },
-                { imagePath: 'zdjecia/inna-kategoria3.png', altText: 'Opis obrazka 3 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 3 dla Inna Kategoria' },
-                { imagePath: 'zdjecia/inna-kategoria4.png', altText: 'Opis obrazka 4 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 4 dla Inna Kategoria' },
-                { imagePath: 'zdjecia/inna-kategoria5.png', altText: 'Opis obrazka 5 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 5 dla Inna Kategoria' },
-                { imagePath: 'zdjecia/inna-kategoria6.png', altText: 'Opis obrazka 6 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 6 dla Inna Kategoria' }
-            ]
+            // Inkrementuj licznik lub wróć do 0, jeśli osiągnięto koniec tablicy obrazków
+            currentIndex = (currentIndex + 1) % images.length;
         };
+
+        // Wywołaj funkcję showNextImage co 5 sekund
+        const intervalId = setInterval(showNextImage, 5000);
+
+        // Wywołaj funkcję showNextImage, aby wyświetlić pierwszy obrazek od razu
+        showNextImage();
+    } else {
+        console.error('Brak obrazków dla kategorii:', category);
+    }
+}
+
+// Tutaj dodaj dane obrazków dla kategorii
+const imagesData = {
+    'SYSTEM PE-X': [
+        { imagePath: 'zdjecia/1/1_1/rura2.png', altText: 'NO NIE WIEM 1', additionalText: 'Dodatkowy tekst 1 dla SYSTEM PE-X' },
+        { imagePath: 'zdjecia/1/1_1/rura2.png', altText: 'SIE OKAZE 2', additionalText: 'Dodatkowy tekst 2 dla SYSTEM PE-X' },
+        { imagePath: 'zdjecia/1/1_1/rura2.png', altText: 'Opis obrazka 3 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 3 dla SYSTEM PE-X' },
+        { imagePath: 'zdjecia/1/1_1/rura2.png', altText: 'Opis obrazka 4 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 4 dla SYSTEM PE-X' },
+        { imagePath: 'zdjecia/1/1_1/rura2.png', altText: 'Opis obrazka 5 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 5 dla SYSTEM PE-X' },
+        { imagePath: 'zdjecia/1/1_1/rura2.png', altText: 'Opis obrazka 6 dla SYSTEM PE-X', additionalText: 'Dodatkowy tekst 6 dla SYSTEM PE-X' }
+    ],
+    'Inna Kategoria': [
+        { imagePath: 'zdjecia/inna-kategoria1.png', altText: 'Opis obrazka 1 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 1 dla Inna Kategoria' },
+        { imagePath: 'zdjecia/inna-kategoria2.png', altText: 'Opis obrazka 2 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 2 dla Inna Kategoria' },
+        { imagePath: 'zdjecia/inna-kategoria3.png', altText: 'Opis obrazka 3 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 3 dla Inna Kategoria' },
+        { imagePath: 'zdjecia/inna-kategoria4.png', altText: 'Opis obrazka 4 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 4 dla Inna Kategoria' },
+        { imagePath: 'zdjecia/inna-kategoria5.png', altText: 'Opis obrazka 5 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 5 dla Inna Kategoria' },
+        { imagePath: 'zdjecia/inna-kategoria6.png', altText: 'Opis obrazka 6 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 6 dla Inna Kategoria' }
+    ]
+};
 </script>
 </body>
 </html>

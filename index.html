@@ -1670,6 +1670,7 @@ toggleImageOutside('Inna Kategoria', 'zdjecia/inna-kategoria.png', 'Opis obrazka
 
 // Zmienna globalna do śledzenia aktualnie wyświetlanej kategorii
 let currentCategory = null;
+let intervalId = null; // Zmienna globalna do przechowywania intervalId
 
 function toggleImages(category) {
     console.log("Kategoria kliknięta:", category);
@@ -1677,10 +1678,14 @@ function toggleImages(category) {
     // Znajdź lub utwórz główny kontener dla wszystkich zdjęć
     let mainImageContainer = document.querySelector('.main-image-container');
 
-    // Jeśli kliknięta kategoria jest już wyświetlana, usuń kontener i zresetuj currentCategory
+    // Jeśli kliknięta kategoria jest już wyświetlana, usuń kontener, zatrzymaj interwał i zresetuj currentCategory
     if (currentCategory === category) {
         if (mainImageContainer) {
             mainImageContainer.remove();
+        }
+        if (intervalId) {
+            clearInterval(intervalId); // Zatrzymaj interwał
+            intervalId = null; // Zresetuj intervalId
         }
         currentCategory = null;
         return;
@@ -1735,13 +1740,33 @@ function toggleImages(category) {
             currentIndex = (currentIndex + 1) % images.length;
         };
 
-        // Wywołaj funkcję showNextImage co 5 sekund
-        const intervalId = setInterval(showNextImage, 5000);
+        // Wywołaj funkcję showNextImage co 5 sekund i zapisz intervalId
+        intervalId = setInterval(showNextImage, 5000);
 
         // Wywołaj funkcję showNextImage, aby wyświetlić pierwszy obrazek od razu
         showNextImage();
     } else {
         console.error('Brak obrazków dla kategorii:', category);
+    }
+}
+
+// Funkcja do dodawania obrazka do kategorii
+function addCategoryImage(activeCategory) {
+    // Sprawdź, czy aktywna kategoria istnieje i czy obrazek nie został już dodany
+    if (activeCategory && !activeCategory.querySelector('.category-image')) {
+        const img = document.createElement('img');
+        img.src = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj0ZXh0PjwvZz48L3N2Zz4='; // Twój kod base64
+        img.alt = 'Opis obrazka';
+        img.classList.add('category-specific-image'); // Nowa unikalna klasa
+
+        // Dodaj obrazek wewnątrz aktywnej kategorii
+        activeCategory.appendChild(img);
+
+        // Dodaj zdarzenie kliknięcia do obrazka, aby ukryć go i zatrzymać animację obrazków
+        img.addEventListener('click', () => {
+            img.remove(); // Usuń obrazek
+            toggleImages(currentCategory); // Zatrzymaj animację obrazków i usuń kontener
+        });
     }
 }
 

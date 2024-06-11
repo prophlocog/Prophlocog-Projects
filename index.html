@@ -43,7 +43,9 @@
 
    <body>
 
-
+  <div id="loading-bar-container">
+        <div id="loading-bar"></div>
+    </div>
 
 
     <div class="container1">
@@ -1789,6 +1791,35 @@ const imagesData = {
         { imagePath: 'zdjecia/inna-kategoria6.png', altText: 'Opis obrazka 6 dla Inna Kategoria', additionalText: 'Dodatkowy tekst 6 dla Inna Kategoria' }
     ]
 };
+
+
+    // Funkcja do pokazania paska ładowania
+        function showLoadingBar() {
+            const loadingBar = document.getElementById('loading-bar');
+            loadingBar.style.width = '0%';
+            document.getElementById('loading-bar-container').style.display = 'block';
+            setTimeout(() => {
+                loadingBar.style.width = '100%';
+            }, 10);
+        }
+
+        // Funkcja do ukrycia paska ładowania
+        function hideLoadingBar() {
+            const loadingBar = document.getElementById('loading-bar');
+            loadingBar.style.width = '100%';
+            setTimeout(() => {
+                document.getElementById('loading-bar-container').style.display = 'none';
+                loadingBar.style.width = '0%';
+            }, 300);
+        }
+
+        // W przypadku załadowania dokumentu
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hideLoadingBar(); // Ukryj pasek ładowania po załadowaniu dokumentu
+            initializeCategoriesAndImages();
+        });
+
+
 </script>
 </body>
 </html>

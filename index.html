@@ -1898,37 +1898,49 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
 
         // Dodajemy zdarzenie kliknięcia na kategorię
-        category.addEventListener('click', (event) => {
-            event.stopPropagation(); // Zatrzymaj propagację, aby kliknięcia w podkategorie nie zamykały kategorii
-            
-            if (category.classList.contains('clicked')) {
-                category.classList.remove('clicked');
-                category.classList.remove('active'); // Usuwamy klasę aktywnej kategorii
-                removeCategoryImage(category); // Usuń obrazek z kategorii
-            } else {
-                // Zamknij wszystkie inne kategorie i usuń ich obrazki
-                categories.forEach(otherCategory => {
-                    if (otherCategory !== category) {
-                        otherCategory.classList.remove('clicked');
-                        otherCategory.classList.remove('active');
-                        removeCategoryImage(otherCategory); // Usuń obrazek z innych kategorii
-                    }
-                });
-                category.classList.add('clicked');
-                category.classList.add('active'); // Dodajemy klasę aktywnej kategorii
-                addCategoryImage(category); // Dodaj obrazek do klikniętej kategorii
+    // Dodajemy zdarzenie kliknięcia na kategorię
+category.addEventListener('click', (event) => {
+    event.stopPropagation(); // Zapobiegaj propagacji, aby kliknięcia w podkategorie nie zamykały kategorii
+    
+    if (category.classList.contains('clicked')) {
+        category.classList.remove('clicked');
+        category.classList.remove('active');
+        category.classList.remove('pulsate'); // Usuwamy klasę pulsacji
+        removeCategoryImage(category); // Usuń obrazek z kategorii
+    } else {
+        // Zamknij wszystkie inne kategorie i usuń ich obrazki
+        categories.forEach(otherCategory => {
+            if (otherCategory !== category) {
+                otherCategory.classList.remove('clicked');
+                otherCategory.classList.remove('active');
+                otherCategory.classList.remove('pulsate'); // Usuwamy klasę pulsowania z innych kategorii
+                removeCategoryImage(otherCategory); // Usuń obrazek z innych kategorii
             }
         });
+        category.classList.add('clicked');
+        category.classList.add('active');
+        category.classList.add('pulsate'); // Dodajemy klasę pulsowania
+        addCategoryImage(category); // Dodaj obrazek do klikniętej kategorii
+    }
+});
     });
 
     // Obsługa kliknięcia w podkategorię
-    const subcategories = document.querySelectorAll('.submenu li');
-    subcategories.forEach(subcategory => {
-        subcategory.addEventListener('click', (event) => {
-            event.stopPropagation(); // Zatrzymaj propagację kliknięcia, aby główna kategoria nie reagowała
-        });
-    });
+const subcategories = document.querySelectorAll('.submenu li');
 
+subcategories.forEach(subcategory => {
+    subcategory.addEventListener('click', (event) => {
+        event.stopPropagation(); // Zatrzymaj propagację kliknięcia
+
+        // Dodaj klasę pulsującą
+        subcategory.classList.add('pulsing');
+
+        // Usuń klasę pulsującą po 2 sekundach
+        setTimeout(() => {
+            subcategory.classList.remove('pulsing');
+        }, 2000);
+    });
+});
     // Inicjuj obrazki przy starcie
     initializeImageContainers();
 

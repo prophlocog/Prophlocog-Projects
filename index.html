@@ -68,7 +68,7 @@
 
 
                     <ul class="submenu submenu3">
-                        <li onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
+                        <li onclick="toggleHighlight(this)" onmouseover="highlightOnHover(this)" onmouseout="removeHighlight(this)">
                             <a href="#" onclick="showCategoryInfo(
                                 '', 
                                 'Rury wielowarstwowe PEXb/AL/PE', 
@@ -2367,6 +2367,10 @@ const imagesData = {
             initializeCategoriesAndImages();
         });
 
+
+ function toggleHighlight(element) {
+    element.classList.toggle('highlight');
+  }
 
 </script>
 </body>

@@ -1,0 +1,158 @@
+const AutoSlideshow = {
+    slideshow: null,
+    slideshowImage: null,
+    autoSlideshow: null,
+    changeTimeout: null,
+    currentSlide: 0,
+    activeCategories: [], // Tablica na aktywne kategorie
+    images: [
+        'zdjecia/slide1.jpg',
+        'zdjecia/slide2.jpg',
+        'zdjecia/slide3.jpg',
+        // Dodaj więcej ścieżek do obrazów
+    ],
+    intervalDuration: 5000, // 5 sekund
+
+    init() {
+        console.log('Inicjalizacja AutoSlideshow');
+        this.createSlideshow();
+        this.setupEventListeners();
+        this.positionSlideshow();
+        this.startSlideshow(); // Startuje pokaz slajdów po załadowaniu
+    },
+
+    createSlideshow() {
+        console.log('Tworzenie slajdu');
+        this.slideshow = document.createElement('div');
+        this.slideshow.id = 'auto-slideshow';
+        this.slideshow.style.position = 'absolute';
+        this.slideshow.style.left = '0';
+        this.slideshow.style.width = '100%';
+        this.slideshow.style.height = '300px';
+        this.slideshow.style.display = 'flex'; // Widoczny od razu
+        this.slideshow.style.justifyContent = 'center';
+        this.slideshow.style.alignItems = 'center';
+        this.slideshow.style.backgroundColor = '#f0f0f0';
+        this.slideshow.style.zIndex = '1000'; // Wysoki z-index, aby był widoczny
+
+        this.slideshowImage = document.createElement('img');
+        this.slideshowImage.id = 'slideshow-image';
+        this.slideshowImage.style.maxWidth = '100%';
+        this.slideshowImage.style.maxHeight = '100%';
+        this.slideshowImage.style.objectFit = 'contain';
+
+        this.slideshow.appendChild(this.slideshowImage);
+
+        const footer = document.querySelector('footer');
+        if (footer) {
+            document.body.insertBefore(this.slideshow, footer);
+        } else {
+            console.error('Nie znaleziono elementu footer');
+            document.body.appendChild(this.slideshow);
+        }
+    },
+
+    positionSlideshow() {
+        console.log('Pozycjonowanie slajdu');
+        const elements = Array.from(document.body.children);
+        const slideShowIndex = elements.indexOf(this.slideshow);
+        const lastElement = elements[slideShowIndex - 1];
+
+        if (lastElement) {
+            const lastElementBottom = lastElement.offsetTop + lastElement.offsetHeight;
+            this.slideshow.style.top = `${lastElementBottom}px`;
+            console.log(`Ustawiono top na ${lastElementBottom}px`);
+        } else {
+            console.error('Nie znaleziono elementu przed slajdem');
+        }
+    },
+
+    changeSlide() {
+        console.log(`Zmiana slajdu na ${this.currentSlide}`);
+        this.slideshowImage.src = this.images[this.currentSlide];
+        this.currentSlide = (this.currentSlide + 1) % this.images.length;
+        this.resetSlideshow();
+    },
+
+    startSlideshow() {
+        console.log('Rozpoczęcie pokazu slajdów');
+        this.stopSlideshow();
+        this.changeSlide();
+        this.autoSlideshow = setInterval(() => this.changeSlide(), this.intervalDuration);
+    },
+
+    stopSlideshow() {
+        console.log('Zatrzymanie pokazu slajdów');
+        if (this.autoSlideshow) {
+            clearInterval(this.autoSlideshow);
+            this.autoSlideshow = null;
+        }
+        if (this.changeTimeout) {
+            clearTimeout(this.changeTimeout);
+            this.changeTimeout = null;
+        }
+    },
+
+    resetSlideshow() {
+        console.log('Resetowanie pokazu slajdów');
+        this.stopSlideshow();
+        this.autoSlideshow = setInterval(() => this.changeSlide(), this.intervalDuration);
+    },
+
+    hideSlideshow() {
+        console.log('Ukrywanie slajdu');
+        this.slideshow.style.display = 'none';
+        this.stopSlideshow();
+    },
+
+    showSlideshow() {
+        console.log('Pokazywanie slajdu');
+        this.slideshow.style.display = 'flex';
+        this.positionSlideshow();
+        this.changeSlide();
+        this.changeTimeout = setTimeout(() => this.startSlideshow(), this.intervalDuration);
+    },
+
+    setupEventListeners() {
+        console.log('Ustawianie nasłuchiwania zdarzeń');
+        const categories = document.querySelectorAll('.category');
+        categories.forEach(category => {
+            category.addEventListener('click', () => this.handleCategoryClick(category));
+        });
+
+        window.addEventListener('resize', () => this.positionSlideshow());
+        window.addEventListener('scroll', () => this.positionSlideshow());
+    },
+
+    handleCategoryClick(category) {
+        console.log(`Kliknięto kategorię: ${category.textContent}`);
+        
+        const index = this.activeCategories.indexOf(category);
+
+        if (index !== -1) {
+            // Jeśli kategoria jest już aktywna, usuwamy ją z listy aktywnych kategorii
+            console.log('Dezaktywacja aktywnej kategorii');
+            category.classList.remove('active-category');
+            this.activeCategories.splice(index, 1);
+        } else {
+            // Dodajemy kategorię do listy aktywnych kategorii
+            console.log('Aktywacja nowej kategorii');
+            category.classList.add('active-category');
+            this.activeCategories.push(category);
+        }
+
+        // Sprawdzamy, czy są jakieś aktywne kategorie
+        if (this.activeCategories.length > 0) {
+            // Jeśli są aktywne kategorie, ukrywamy slajd
+            this.hideSlideshow();
+        } else {
+            // Jeśli nie ma żadnych aktywnych kategorii, pokazujemy slajd
+            this.showSlideshow();
+        }
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM załadowany, inicjalizacja AutoSlideshow');
+    AutoSlideshow.init();
+});

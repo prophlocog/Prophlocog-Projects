@@ -468,7 +468,8 @@ border-radius: 5px;
 height: 560px;
 overflow-y: auto;
 max-height:500px;
-
+border-bottom-left-radius: 5px;
+border-top-left-radius: 5px;
 
 
 
@@ -487,6 +488,9 @@ max-height:500px;
 
 
 
+.active-category {
+font-weight: bold; /* Ustawiamy pogrubienie napisu po kliknięciu */
+}
 /* animacja produktowa */
 
 @keyframes slideInFromLeft {
@@ -608,12 +612,12 @@ max-height:500px;
 
 /* Styl dla każdej kategorii */
 .category {
-  max-height: 500px;
+  max-height: 800px;
 box-sizing: border-box;
 border-width: 100%;
-margin-top: 0px;
+margin-top: 5px;
     margin-bottom: 10px;
-border-radius: 10px;
+border-top-left-radius: 10px;
  letter-spacing: 5px; 
 padding-right: 10px;
 padding-left: 10px;
@@ -660,8 +664,7 @@ padding-left: 10px;
 
 .submenu {
   list-style: none;
-  padding: 0px;
-  margin-top: 00px;
+
   overflow: hidden; /* Ukrywamy elementy, które wystają poza kontener */
   max-height: 0; /* Początkowo ustawiamy wysokość na zero */
   transition: max-height 1s ease; /* Dodajemy płynną animację dla zmiany wysokości */
@@ -675,8 +678,9 @@ padding-left: 10px;
 /* Styl dla podkategorii */
 .submenu li {
 
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin-bottom:20px;
+  margin-top: -22px;
+padding: 20px;
  color: white;
   opacity: 0; /* Ustawiamy początkową przezroczystość na zero */
   transform: translateY(-10px); /* Przesuwamy elementy w górę o 10 pikseli */
@@ -701,7 +705,7 @@ padding:8px;
     text-decoration: none;
     color: #000;
     display: block;
-    margin-top: 10px;
+    margin-top: 5px;
 
 
 }
@@ -709,11 +713,9 @@ padding:8px;
 /* Styl dla linków podkategorii */
 .submenu a {
     text-decoration: none;
+margin-top: 10px;
+margin-bottom: 7px;
 
-margin-right: 4px;
-  margin-bottom: 9px;
-
-  
   color: white; /* Biały kolor tekstu */
 
     display: block;
@@ -724,7 +726,9 @@ font-size: 17px;
 
 /* Dodajemy animację do aktywnego podmenu */
 .category.active .submenu {
-  max-height: 500px; /* Przywracamy maksymalną wysokość, aby zawartość mogła być widoczna */
+
+
+  max-height: 700px; /* Przywracamy maksymalną wysokość, aby zawartość mogła być widoczna */
 }
 
 /* Dodajemy animację do aktywnych elementów podmenu */
@@ -746,7 +750,10 @@ font-size: 17px;
     padding-left: 20px; /* Odsunięcie tekstu o 20px w lewo przy najechaniu */
 }
 
-
+.categorry.active {
+  background-color: #0077b6; /* Kolor tła aktywnej kategorii */
+  color: #fff; /* Kolor tekstu aktywnej kategorii */
+}
 /* Dodajemy animację z czasem trwania 0.6 sekundy */
 
 
@@ -1203,6 +1210,7 @@ z-index: 1;
 }
 
 .category.clicked .submenu {
+
   max-height: 700px; /* Zapewnia rozwinięcie menu */
 }
 
@@ -1327,7 +1335,6 @@ margin-top: -90px;
 }
 
 }  
-   <style>
   .submenu li {
     transition: background-color 0.3s ease;
   }
@@ -1338,21 +1345,11 @@ margin-top: -90px;
     -webkit-backdrop-filter: blur(5px);
   }
 
-.category.active-category {
-    font-weight: bold;
-    color: #007bff; /* lub inny kolor wyróżniający */
+.submenu li.highlighted {
+    background-color: #007bff; /* Niebieski kolor podświetlenia */
+    color: white; /* Biały tekst dla lepszego kontrastu */
 }
 
-
-#auto-slideshow {
-    transition: opacity 1s ease-in-out; /* Przejście z 1s */
+.submenu li {
+    transition: background-color 0.3s ease; /* Płynna animacja zmiany koloru tła */
 }
-
-#auto-slideshow.show {
-    opacity: 1; /* Widoczność slajdu */
-}
-
-#auto-slideshow.hide {
-    opacity: 0; /* Ukrycie slajdu */
-}
-

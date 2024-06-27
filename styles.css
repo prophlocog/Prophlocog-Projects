@@ -16,7 +16,7 @@ body {
     padding: 0; /* Brak paddingu */
     transition: background-color 0.2s, color 0.2s;
 
-
+    min-height: 100vh;
     display: row;
 }
 
@@ -163,6 +163,7 @@ height: 0px;
 
     footer {
         font-size: 0.8rem; /* Zmniejszenie rozmiaru czcionki stopki */
+z-index: 1;
     }
 }
 
@@ -184,7 +185,7 @@ align: center;
     justify-content: center; /* Wyśrodkowanie zawartości w poziomie */
     background-color: white;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 110px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 600px; /* Ustawienie maksymalnej szerokości na 600px */
 height: 25px;
@@ -260,6 +261,7 @@ input[type="submit"]:hover {
     header, main, footer {
         padding-left: 2rem; /* Dodanie paddingu po lewej stronie */
         padding-right: 2rem; /* Dodanie paddingu po prawej stronie */
+z-index: 1;
     }
 
     header h1 {
@@ -272,6 +274,7 @@ input[type="submit"]:hover {
 
     footer {
         position: relative; /* Usunięcie stałej pozycji stopki */
+z-index: 1;
     }
 
     
@@ -303,6 +306,7 @@ input[type="submit"]:hover {
 
     footer {
         font-size: 0.8rem; /* Zmniejszenie rozmiaru czcionki stopki */
+z-index: 1;
     }
     
 }
@@ -326,6 +330,7 @@ input[type="submit"]:hover {
     header, main, footer {
         padding-left: 2rem; /* Dodanie paddingu po lewej stronie */
         padding-right: 2rem; /* Dodanie paddingu po prawej stronie */
+z-index: 1;
     }
 
     header h1 {
@@ -339,6 +344,7 @@ input[type="submit"]:hover {
 
     footer {
         position: relative; /* Usunięcie stałej pozycji stopki */
+z-index: 1;
     }
 
     nav ul {
@@ -613,6 +619,7 @@ padding-right: 10px;
 padding-left: 10px;
 margin-left: 5px;
 position: relative;
+    transition: box-shadow 5s ease-in-out;
 }
 
 /* Styl dla podmenu */
@@ -681,6 +688,8 @@ height: 60px;
   justify-content: center; /* Wycentrowanie w poziomie */
   align-items: center; /* Wycentrowanie w pionie */
   white-space: nowrap; 
+    transition: background-color 0.3s ease;
+
 
 padding:8px;
 
@@ -728,7 +737,7 @@ font-size: 17px;
 /* Efekt rozsuwania napisu */
 .category,
 .submenu li {
-    transition: letter-spacing 0.6s ease, padding-left 0.6s ease; /* Dodajemy efekt przejścia dla letter-spacing i padding-left */
+    transition: letter-spacing 0.5s ease, padding-left 0.4s ease; /* Dodajemy efekt przejścia dla letter-spacing i padding-left */
 }
 
 .category:hover,
@@ -763,6 +772,7 @@ font-size: 17px;
     header, main, footer {
         padding-left: 2rem; /* Dodanie paddingu po lewej stronie */
         padding-right: 2rem; /* Dodanie paddingu po prawej stronie */
+z-index: 1;
     }
 
     header h1 {
@@ -782,6 +792,7 @@ font-size: 17px;
     color: #fff; /* Kolor tekstu stopki */
     text-align: center; /* Wyśrodkowanie tekstu */
     padding: 1rem 0; /* Padding wewnętrzny */
+z-index: 1;
     }
 
 
@@ -1052,6 +1063,7 @@ body.dark-mode nav ul li:nth-child(n+2):nth-child(-n+9) {
 
 .dark-mode footer {
     background-color: #222; /* Ciemne tło stopki */
+z-index: 1;
 }
 
 
@@ -1080,6 +1092,7 @@ body.dark-mode nav ul li:nth-child(n+2):nth-child(-n+9) {
 
     footer {
         font-size: 1rem; /* Zwiększenie rozmiaru czcionki stopki */
+z-index: 1;
     }
 main {
 display: flex;
@@ -1229,9 +1242,8 @@ margin-top: -10px;
 .category-image {
 
 
-    position: fixed; /* Ustawienie obrazka na stałe w określonym miejscu na ekranie */
-    bottom: 20px; /* Odległość od dołu ekranu */
-    right: 20px;
+    bottom: 220px; /* Odległość od dołu ekranu */
+    margin-right: 80px;
     width: auto; /* Szerokość obrazka */
     height: 65px; /* Wysokość obrazka dostosowana proporcjonalnie */
     border: 2px solid #ccc; /* Grubość i styl obramowania */
@@ -1253,54 +1265,94 @@ margin-top: -10px;
    padding: 5px; /* Odstęp między obrazkiem a tekstem kategorii */
 }
 
-/* Dodaj ten kod CSS do swojego pliku CSS */
+/* Styl dla głównego kontenera obrazków */
 .main-image-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px; /* Ustaw maksymalną szerokość kontenera */
-    margin: 0 auto; /* Wyśrodkuj kontener */
-    text-align: center; /* Wyśrodkuj tekst */
+
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  margin: auto; /* Centruje kontener w dostępnej przestrzeni */
+    max-width: 100%; /* Zapobiega rozciąganiu poza szerokość ekranu */
+    max-height: 80vh; /* Ogranicza maksymalną wysokość do 80% wysokości widoku */
+  padding: 30px;
+margin-top: -90px;
 }
 
-.main-image-container img {
-    width: 100%;
-    height: auto; /* Zapewnij, że obrazki będą skalowane proporcjonalnie */
+/* Styl dla pojedynczego obrazka */
+.zdjeciepoza {
+    margin: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-.main-image-container div {
-    margin-top: 10px; /* Dodaj odstęp nad opisem */
-    font-size: 16px; /* Ustaw rozmiar czcionki dla opisu */
-    color: #333; /* Ustaw kolor tekstu dla opisu */
+/* Dodaj animację CSS dla obrazków */
+.zdjeciepoza img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* Styl dla kontenera paska ładowania */
-#loading-bar-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background-color: #f3f3f3; /* Kolor tła */
-    z-index: 9999; /* Zawsze na wierzchu */
+/* Ustaw opacity na 1, gdy obrazek jest widoczny */
+.zdjeciepoza img:first-child {
+    opacity: 1;
 }
 
-/* Styl dla samego paska ładowania */
-#loading-bar {
-    width: 0;
-    height: 100%;
-    background-color: #3498db; /* Kolor paska */
-    animation: load 2s infinite;
+
+
+.clicked-subcategory {
+    background-color: #f1f1f1;
+     transition: letter-spacing 0.6s ease, padding-left 0.6s ease;
+    color: #000;
 }
 
-/* Animacja paska ładowania */
-@keyframes load {
+.category {
+    transition: box-shadow 1s ease-in-out;
+}
+
+.category.pulsate {
+    animation: pulsate-shadow 0.8s ease-in-out forwards;
+}
+
+@keyframes pulsate-shadow {
     0% {
-        width: 0;
+        box-shadow: 0 0 5px 0px rgba(30, 144, 255, 0.7); /* Mały promień rozmycia */
     }
-    50% {
-        width: 100%;
+    20% {
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5); /* Zwiększony promień rozmycia, mniejszy promień rozprzestrzeniania */
     }
     100% {
-        width: 0;
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5); /* Zwiększony promień rozmycia, mniejszy promień rozprzestrzeniania */
     }
 }
+
+}  
+   <style>
+  .submenu li {
+    transition: background-color 0.3s ease;
+  }
+
+  .submenu li.highlight {
+    background-color: rgba(0, 127, 255, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+.category.active-category {
+    font-weight: bold;
+    color: #007bff; /* lub inny kolor wyróżniający */
+}
+
+
+#auto-slideshow {
+    transition: opacity 1s ease-in-out; /* Przejście z 1s */
+}
+
+#auto-slideshow.show {
+    opacity: 1; /* Widoczność slajdu */
+}
+
+#auto-slideshow.hide {
+    opacity: 0; /* Ukrycie slajdu */
+}
+

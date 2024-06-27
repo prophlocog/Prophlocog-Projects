@@ -40,10 +40,13 @@ header h1 {
 
 /* Styl dla listy nawigacyjnej */
 nav ul {
-    list-style: none; /* Usunięcie punktorów z listy */
-    display: flex; /* Ustawienie elementów w jednej linii */
-    justify-content: center; /* Wyśrodkowanie elementów w poziomie */
-
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -678,16 +681,16 @@ padding-left: 10px;
 /* Styl dla podkategorii */
 .submenu li {
 
-  margin-bottom:20px;
-  margin-top: -22px;
-padding: 20px;
+  margin-bottom:0px;
+
+
  color: white;
   opacity: 0; /* Ustawiamy początkową przezroczystość na zero */
   transform: translateY(-10px); /* Przesuwamy elementy w górę o 10 pikseli */
  border-radius: 5px;
   font-size: 17px;
   font-family: lato, sans-serif;
-height: 60px;
+height: 50px;
   display: flex; /* Ustawiamy flexbox */
   justify-content: center; /* Wycentrowanie w poziomie */
   align-items: center; /* Wycentrowanie w pionie */
@@ -705,7 +708,7 @@ padding:8px;
     text-decoration: none;
     color: #000;
     display: block;
-    margin-top: 5px;
+ 
 
 
 }
@@ -713,13 +716,14 @@ padding:8px;
 /* Styl dla linków podkategorii */
 .submenu a {
     text-decoration: none;
-margin-top: 10px;
-margin-bottom: 7px;
+
+
+
 
   color: white; /* Biały kolor tekstu */
 
     display: block;
-    padding: 2px; /* Dodatkowy odstęp dla podkategorii */
+    /* Dodatkowy odstęp dla podkategorii */
    font-weight: 500; /* Pogrubienie tekstu */
 font-size: 17px;
 }
@@ -1229,6 +1233,7 @@ z-index: 1;
 .category-specific-image
 {
 margin-top: -10px;
+
     width: auto; /* Szerokość obrazka */
     height: 62px; /* Wysokość obrazka dostosowana proporcjonalnie */
     border: 2px solid #ccc; /* Grubość i styl obramowania */

@@ -456,8 +456,9 @@ margin-left: px;
 
 margin-left: 2rem;
     width: 380px;
-    background-color: #fff;
-  
+    background-color: transparent;
+    position: relative;
+    z-index: 0;
 text-align: center;
  
 margin-top: -0.5%; 
@@ -521,8 +522,8 @@ font-weight: bold; /* Ustawiamy pogrubienie napisu po kliknięciu */
   
   /* Stylowanie dodatkowego tekstu */
   .additional-text {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 200px;
+    max-height: 200px;
     background-color: #fff;
     display: block;
     opacity: 0;
@@ -564,24 +565,20 @@ font-weight: bold; /* Ustawiamy pogrubienie napisu po kliknięciu */
   /* Stylowanie obiektu zawierającego obrazki */
   
 
-    .image-container {
-        align-items: center;
-        margin-top: 4rem;
-        position: relative;
-    overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: inherit;
-        text-align: center;
-        max-width: 200px;
-        max-height: 200px;
-        border: 1px solid #ddd;
-        padding: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        flex: 1 1 200px; /* Dodane */
-        
-        
-    }
+.image-container {
+    align-items: center; /* Możesz zostawić, jeśli chcesz zawartość w centrum */
+    margin-top: 4rem;
+    position: relative;
+    overflow: hidden; /* Zapobiega wyświetlaniu zawartości większej od 200x200 */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 200px; /* Ustawienie szerokości na 200px */
+    height: 200px; /* Ustawienie wysokości na 200px */
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
   
 
   .image-container:hover {
@@ -591,8 +588,8 @@ font-weight: bold; /* Ustawiamy pogrubienie napisu po kliknięciu */
   /* Stylowanie obrazków */
   img {
     display: block; /* Ustawienie obrazków jako bloki, aby mogły być animowane */
-    width: 100px;
-    height: 100px; /* Ustawienie szerokości na 100% */
+   width: auto; /* Automatyczna szerokość */
+    height: auto; /* Automatyczna wysokość */
     opacity: 0; /* Początkowo ukryj obrazek */
     animation: slideInFromLeft 0.5s ease forwards; /* Dodaj animację slideInFromLeft */
     margin-right: 12px;
@@ -975,7 +972,7 @@ background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmN
     display: inline-block;
     width: 60px;
     height: 24px;
-    padding: ;
+    padding: 0;
 margin-top: 1px;
 }
 
@@ -1157,7 +1154,7 @@ display: flex;
 /* Styl dla dodatkowego kontentu z białym tłem */
 .white-background {
    
-    background-color: #fff; /* Białe tło */
+    background-color: transparent; /* Białe tło */
     flex-grow: 1; /* Elastyczność - zajmie dostępną przestrzeń */
     margin-left: 10px; /* Margines po lewej stronie */
     margin-right: 20px;
@@ -1339,7 +1336,7 @@ margin-top: -90px;
     }
 }
 
-}  
+  
   .submenu li {
     transition: background-color 0.3s ease;
   }
@@ -1397,4 +1394,19 @@ margin-top: -90px;
     background-color: rgba(43, 117, 185, 0.8);
     color: inherit;
     cursor: default;
+}
+
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: -1;
+}
+
+
+.categories {
+    position: relative;
+    z-index: 1;
 }
